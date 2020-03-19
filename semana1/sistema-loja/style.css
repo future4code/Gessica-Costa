@@ -1,0 +1,68 @@
+body {
+    text-align: center;
+}
+
+header {
+    vertical-align: center;
+    border: solid;
+}
+
+.links {
+    text-decoration: none;
+    font-size: 30px;
+    padding: 15px;
+    color: rgb(214, 168, 168);
+    display: inline-block;
+}
+
+.links:hover {
+    background-color: rgb(198, 235, 143);
+}
+
+.links:active {
+    background-color: red;
+}
+
+div {
+    margin: 0 0 180px 0;
+}
+
+h1 {
+    font-size: 80px;
+    margin-bottom: 0;
+    margin-top: 180px;
+}
+
+
+/* h2 {
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+} */
+
+.instagram {
+    margin: 0 10px 0 auto;
+    display: block;
+    height: 30px;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+th {
+    width: 250px;
+    height: 40px;
+}
+
+.imagens {
+    width: 300px;
+}
