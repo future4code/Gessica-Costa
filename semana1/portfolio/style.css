@@ -1,0 +1,96 @@
+body{
+    margin: 0px;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+	font-size: 20px;
+} 
+
+header{
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.logo{
+    height: 70px;
+}
+
+.linkshead {
+    float: right;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    border-bottom-style: solid;
+}
+.linkshead:hover{
+    color: gray;
+}
+
+h1{
+    margin: 150px 20%;
+    color: rgb(79, 172, 141);
+}
+
+.projetos-software{
+    width: 30%;
+    margin: 10px;
+    border: 3px solid;
+    border-color: rgb(79, 172, 141);
+    border-radius: 150px;
+}
+.central{
+    text-align: center;
+}
+table{
+    width: 100%;
+    margin-bottom: 70px;
+}
+img{
+    display: inline-block;
+    padding: 5px;
+}
+div{
+    text-align: center;
+}
+.logos {
+    height: 30px;
+    margin-left: 10px;
+}
+footer{
+    padding: 30px;
+    text-align: right;
+    border-top-style: ridge; 
+    margin-top: 20px;
+}
+#div-softwares{
+    margin: 50px auto;
+}
+.instituicoes{
+    color: black;
+}
+
+.instituicoes:hover{
+    color: gray;
+}
+
+ul,li,h3{
+    text-align: center;
+    margin: 5px 30px;
+    list-style-position: inside;
+}
+
+button {
+    background-color:white;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 5px;
+}
+#mensagem{
+    height: 200px;
+    width: 500px;
+    vertical-align: text-top;
+}
