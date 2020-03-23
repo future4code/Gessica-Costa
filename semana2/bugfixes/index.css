@@ -29,10 +29,6 @@ img {
     width: 100px;
 }
 
-div>p:first-child {
-    display: inline;
-}
-
 div img {
     background: black;
 }
@@ -43,7 +39,7 @@ div img {
     height: 40px;
     border-radius: 5px;
     font-size: 20px;
-    color: white;
+    color: white;  
 }
 
 .botao-amarelo:hover {
