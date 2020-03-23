@@ -97,6 +97,7 @@ table {
     width: 60%;
     font-weight: bold;
     text-align: center;
+    margin: 0 auto;
 }
 
 td button {
@@ -116,6 +117,9 @@ td button:hover {
     height: 100px;
 }
 
+a {
+    text-decoration: none;
+}
 
 #back-button {
     background-color: white;
@@ -125,6 +129,8 @@ td button:hover {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    display: block;
+    margin: 0 auto;
 }
 
 #back-button:hover {
