@@ -28,6 +28,14 @@ button:active {
     color: white;
 }
 
+button:active,
+button:focus,
+button:focus:active,
+input:active,
+input:focus {
+    outline: 0;
+}
+
 img {
     width: 60px;
 }
