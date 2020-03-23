@@ -1,11 +1,18 @@
 body{
     margin: 0px;
+    padding: 0;
     font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-	font-size: 20px;
+    font-size: 20px;
+   
 } 
 
 header{
     padding: 20px;
+    height: 10%;
+}
+
+#nav{
+    list-style-type: none;
 }
 
 a{
@@ -23,59 +30,130 @@ a{
     padding: 20px;
     border-bottom-style: solid;
 }
-.linkshead:hover{
-    color: gray;
+.linkshead:hover {
+    color: darkgray;
 }
 
-h1{
-    margin: 150px 20%;
-    color: rgb(79, 172, 141);
+h1 {
+    margin: 60px 20%;
+    color: rgb(94, 202, 166);
 }
 
-.projetos-software{
+.projetos-software, .projetos-software-pagina {
     width: 30%;
     margin: 10px;
-    border: 3px solid;
-    border-color: rgb(79, 172, 141);
-    border-radius: 150px;
+    border: 1px solid;
+    border-color:rgb(94, 202, 166);
+    padding: 3px;
 }
-.central{
+
+.projetos-software:hover {
+    border: 2px solid;
+    border-color:rgb(94, 202, 166);
+}
+
+#div-projeto {
+    margin: 20px 20px 200px 20px;
+}
+
+#body-contato #contato, #body-projf4 #projf4, #body-projloja #projloja{
+    background-color: rgb(94, 202, 166);
+}
+
+#sobre {
+    padding: 60px 220px;
+    background-color: rgb(94, 202, 166);
+    color: white;
+    margin-bottom: 0;
+    
+}
+
+.p-projetos {
+    padding: 0 25%;
+}
+
+#h3-habilidades {
+    margin-top: 0;
+    text-decoration: underline;
+}
+
+#h3-projeto {
+    margin: 60px auto 20px auto;
+}
+
+#ul-projeto {
+    margin-bottom: 60px;
+}
+
+#div-habilidades {
+    background-color: rgb(94, 202, 166);
+    margin: 0;
+    padding-bottom: 50px;
+    color: white;
+    margin-bottom: 50px;
+}
+
+#habilidades {
+    list-style-type: circle;
+    text-align: left;
+    margin-left: -30%;;
+    margin-right: 15%;
+}
+
+.central {
     text-align: center;
 }
-table{
+
+table {
     width: 100%;
     margin-bottom: 70px;
 }
-img{
+
+#logo:hover {
+    border: solid 1px;
+    border-radius: 50%;
+    border-color: darkgray;
+}
+
+.logo {
     display: inline-block;
     padding: 5px;
 }
-div{
+
+.meio {
     text-align: center;
+    height: 80%;
 }
+
 .logos {
     height: 30px;
-    margin-left: 10px;
+    margin: 10px 40px 0 0;
 }
-footer{
-    padding: 30px;
+
+footer {
+    padding: 20px;
+    margin: 10px auto 0 auto;
     text-align: right;
-    border-top-style: ridge; 
-    margin-top: 20px;
+    border-top-style: ridge;
+    height: 10%;
 }
-#div-softwares{
+
+#div-softwares {
     margin: 50px auto;
+    text-align: center;
 }
-.instituicoes{
+
+.instituicoes {
     color: black;
 }
 
-.instituicoes:hover{
-    color: gray;
+.instituicoes:hover {
+    color: darkgray;
 }
 
-ul,li,h3{
-    text-align: center;
+ul,li {
+    text-align: left;
+    padding-left: 25%;
     margin: 5px 30px;
     list-style-position: inside;
 }
@@ -89,8 +167,17 @@ button {
     font-size: 20px;
     margin: 5px;
 }
-#mensagem{
+#mensagem {
     height: 200px;
     width: 500px;
-    vertical-align: text-top;
+}
+
+input,textarea {
+    margin: 5px auto 20px auto;
+}
+
+#foto {
+    border-radius: 50%;
+    width: 10%;
+    margin-bottom: 50px;
 }
