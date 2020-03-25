@@ -1,35 +1,77 @@
+body {
+    margin: 0;
+}
+
 div {
     color: white;
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#linha1 {
+    height: 7%;
+    display: flex;
+    flex-direction: row;
+}
+
+#linha3 {
+    height: 28%;
+    display: flex;
+    flex-direction: row;
+}
+
+#linha3-2 {
+    width: 25%;
 }
 
 #header {
     background-color: #2ECC40;
+    width: 25%;
 }
 
 #menu {
     background-color: #FFDC00;
+    width: 75%;
 }
 
 #content1 {
+    height: 58%;
     background-color: #F012BE;
 }
 
 #content2 {
+    width: 50%;
     background-color: #0074D9;
 }
 
 #content3 {
+    width: 25%;
     background-color: white;
 }
 
 #image {
+    height: 50%;
     background-color: #FF4136;
 }
 
 #extra {
+    height: 50%;
     background-color: #01FF70;
 }
 
 #footer {
+    height: 7%;
     background-color: #B10DC9;
 }
