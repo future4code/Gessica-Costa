@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    display: grid;
+    gap: 0.5em;
+    padding: 0.5em;
+}
+
+#vermelho {
+    width: 100vw;
+    height: 12.5vh;
+    background-color: red;
+}
+
+.retanguloscoloridos {
+    height: 25vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5em;
+}
+
+.quadradospretos {
+    height: 49vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+}
+
+.retangulosbrancos {
+    height: 12.5vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5em;
+}
+
+.item {
+    display: grid;
+    align-items: center;
+    border: 1px solid;
+}
+
+#item1 {
+    background-color: blue;
+}
+
+#item2 {
+    background-color: yellow;
+}
+
+#item3 {
+    background-color: green;
+}
+
+#item4 {
+    background-color: blue;
+}
+
+#item5 {
+    background-color: yellow;
+}
+
+#item6 {
+    background-color: green;
+}
+
+#item7 {
+    color: white;
+    background-color: black;
+}
+
+#item8 {
+    color: white;
+    background-color: black;
+}
+
+#item9 {
+    background-color: white;
+}
+
+#item10 {
+    background-color: white;
+}
+
+#item11 {
+    background-color: white;
+}
+
+@media screen and (max-width: 800px) {
+    .retanguloscoloridos {
+        height: 50vh;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .retangulosbrancos {
+        height: 25vh;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    #item3,
+    #item11 {
+        grid-column: 1/3;
+        grid-row: 2/3;
+    }
+    #item6 {
+        grid-column: 1/3;
+        grid-row: 4/5;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #vermelho {
+        height: 3rem;
+    }
+    .item {
+        height: 3rem;
+        margin-bottom: 0.5rem;
+    }
+    .container,
+    .retanguloscoloridos,
+    .quadradospretos,
+    .retangulosbrancos {
+        display: block;
+    }
+    .retanguloscoloridos {
+        height: 21.5rem;
+    }
+    .quadradospretos {
+        height: 7rem;
+    }
+}
