@@ -152,34 +152,137 @@ https://onedrive.live.com/?authkey=%21AHlqNw6GykpFQDk&cid=52AFBD2A3EAE26B7&id=52
 */
 //5. b.
 
-const ossos = prompt("Possui ossos formando seu esqueleto? [s/n]")
-if (ossos === "n") {
-    console.log("É um invertebrado.")
-} else {
-    const pelos = prompt("Possui pelos? [s/n]")
-    if (pelos === "s") {
-        const racional = prompt("É racional? [s/n]")
-        if (racional === "s") {
-            console.log("É um ser humano.")
-        } else {
-            console.log("É um mamífero não humano.")
-        }
-    } else {
-        const penas = prompt("Possui penas? [s/n]")
-        if (penas === "s") {
-            console.log("É uma ave.")
-        } else {
-            const terrestre = prompt("É um animal terrestre? [s/n]")
-            if (terrestre === "n") {
-                console.log("É um peixe.")
-            } else {
-                const ambienteAquatico = prompt("Passa parte da vida em ambiente aquático? [s/n]")
-                if (ambienteAquatico === "s") {
-                    console.log("É um anfíbio.")
-                } else {
-                    console.log("É um réptil.")
-                }
-            }
-        }
+// const ossos = prompt("Possui ossos formando seu esqueleto? [s/n]")
+// if (ossos === "n") {
+//     console.log("É um invertebrado.")
+// } else {
+//     const pelos = prompt("Possui pelos? [s/n]")
+//     if (pelos === "s") {
+//         const racional = prompt("É racional? [s/n]")
+//         if (racional === "s") {
+//             console.log("É um ser humano.")
+//         } else {
+//             console.log("É um mamífero não humano.")
+//         }
+//     } else {
+//         const penas = prompt("Possui penas? [s/n]")
+//         if (penas === "s") {
+//             console.log("É uma ave.")
+//         } else {
+//             const terrestre = prompt("É um animal terrestre? [s/n]")
+//             if (terrestre === "n") {
+//                 console.log("É um peixe.")
+//             } else {
+//                 const ambienteAquatico = prompt("Passa parte da vida em ambiente aquático? [s/n]")
+//                 if (ambienteAquatico === "s") {
+//                     console.log("É um anfíbio.")
+//                 } else {
+//                     console.log("É um réptil.")
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// DESAFIO
+const nome = prompt("Informe seu nome completo")
+let tipoJogo = prompt("Informe o tipo de jogo [IN/DO]")
+let etapa = prompt("Informe a etapa do jogo [SF/DT/FI]")
+const categoria = prompt("Informe a categoria do jogo [1/2/3/4]")
+const quantidade = Number(prompt("Informe a quantidade de ingressos"))
+let preco
+let valorTotal
+
+if (etapa === "SF") {
+    switch (categoria) {
+        case "1":
+            preco = 1320
+            break
+        case "2":
+            preco = 880
+            break
+        case "3":
+            preco = 550
+            break
+        case "4":
+            preco = 220
+            break
+        default:
+            console.log("Essa categoria não existe.")
+            break
     }
+} else if (etapa === "DT") {
+    switch (categoria) {
+        case "1":
+            preco = 660
+            break
+        case "2":
+            preco = 440
+            break
+        case "3":
+            preco = 330
+            break
+        case "4":
+            preco = 170
+            break
+        default:
+            console.log("Essa categoria não existe.")
+            break
+    }
+} else if (etapa === "FI") {
+    switch (categoria) {
+        case "1":
+            preco = 1980
+            break
+        case "2":
+            preco = 1320
+            break
+        case "3":
+            preco = 880
+            break
+        case "4":
+            preco = 330
+            break
+        default:
+            console.log("Essa categoria não existe.")
+            break
+    }
+} else {
+    console.log("Etapa não existente, tente novamente.")
+}
+
+valorTotal = preco * quantidade
+precoIN = preco * 4.1
+valorTotalIN = precoIN * quantidade
+
+if (etapa === "SF") {
+    etapa = "Semifinais"
+} else if (etapa === "DT") {
+    etapa = "Decisão do 3º lugar"
+} else if (etapa === "FI") {
+    etapa = "Final"
+}
+
+if (tipoJogo === "DO") {
+    console.log(["---Dados da compra---\nNome do cliente: ", nome,
+        "\nTipo do jogo: Nacional",
+        "\nEtapa do Jogo: ", etapa,
+        "\nCategoria: ", categoria,
+        "\nQuantidade de Ingressos: ", quantidade, " ingressos",
+        "\n---Valores---",
+        "\nValor do ingresso: R$ ", preco,
+        "\nValor total: R$ ", valorTotal
+    ].join(""))
+} else if (tipoJogo === "IN") {
+    console.log(["---Dados da compra---\nNome do cliente: ", nome,
+        "\nTipo do jogo: Internacional",
+        "\nEtapa do Jogo: ", etapa,
+        "\nCategoria: ", categoria,
+        "\nQuantidade de Ingressos: ", quantidade, " ingressos",
+        "\n---Valores---",
+        "\nValor do ingresso: R$ ", precoIN,
+        "\nValor total: R$ ", valorTotalIN
+    ].join(""))
+} else {
+    console.log("Esse tipo de jogo não existe.")
 }
