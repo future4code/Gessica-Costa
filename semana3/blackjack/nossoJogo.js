@@ -10,30 +10,30 @@
  * 
  * 
  */
-console.log("Bem vindo ao jogo de Blackjack!")
-const confirm = prompt("Quer iniciar uma nova rodada? [s/n]")
+// console.log("Bem vindo ao jogo de Blackjack!")
+// const confirm = prompt("Quer iniciar uma nova rodada? [s/n]")
 
-if (confirm === "s") {
-    const cartaUsuario = comprarCarta()
-    const cartaUsuario2 = comprarCarta()
-    cartaUsuario.valor += cartaUsuario2.valor
-    const cartaComputador = comprarCarta()
-    const cartaComputador2 = comprarCarta()
-    cartaComputador.valor += cartaComputador2.valor
-    console.log("Usuário - cartas: " + (cartaUsuario.texto) + " e " + cartaUsuario2.texto + "  - pontuação " + (cartaUsuario.valor))
-    console.log("Computador - cartas: " + (cartaComputador.texto) + " e " + cartaComputador2.texto + "  - pontuação " + (cartaComputador.valor))
+// if (confirm === "s") {
+//     const cartaUsuario = comprarCarta()
+//     const cartaUsuario2 = comprarCarta()
+//     cartaUsuario.valor += cartaUsuario2.valor
+//     const cartaComputador = comprarCarta()
+//     const cartaComputador2 = comprarCarta()
+//     cartaComputador.valor += cartaComputador2.valor
+//     console.log("Usuário - cartas: " + (cartaUsuario.texto) + " e " + cartaUsuario2.texto + "  - pontuação " + (cartaUsuario.valor))
+//     console.log("Computador - cartas: " + (cartaComputador.texto) + " e " + cartaComputador2.texto + "  - pontuação " + (cartaComputador.valor))
 
-    if ((cartaUsuario.valor > cartaComputador.valor && cartaUsuario.valor <= 21) || (cartaUsuario.valor < cartaComputador.valor && cartaComputador.valor > 21 && cartaUsuario.valor <= 21)) {
-        console.log("O usuário ganhou!")
-    } else if ((cartaComputador.valor > cartaUsuario.valor && cartaComputador.valor <= 21) || (cartaUsuario.valor > cartaComputador.valor && cartaUsuario.valor > 21 && cartaComputador.valor <= 21)) {
-        console.log("O computador ganhou!")
-    } else if (cartaUsuario.valor > cartaComputador.valor && cartaUsuario.valor > 21 && cartaComputador <= 21) {
-        console.log("O computador ganhou!")
-    } else if (cartaComputador.valor > cartaUsuario.valor && cartaComputador.valor > 21 && cartaUsuario <= 21) {
-        console.log("O usuário ganhou!")
-    } else {
-        console.log("Empate!")
-    }
-} else {
-    console.log("O jogo acabou.")
-}
+//     if ((cartaUsuario.valor > cartaComputador.valor && cartaUsuario.valor <= 21) || (cartaUsuario.valor < cartaComputador.valor && cartaComputador.valor > 21 && cartaUsuario.valor <= 21)) {
+//         console.log("O usuário ganhou!")
+//     } else if ((cartaComputador.valor > cartaUsuario.valor && cartaComputador.valor <= 21) || (cartaUsuario.valor > cartaComputador.valor && cartaUsuario.valor > 21 && cartaComputador.valor <= 21)) {
+//         console.log("O computador ganhou!")
+//     } else if (cartaUsuario.valor > cartaComputador.valor && cartaUsuario.valor > 21 && cartaComputador <= 21) {
+//         console.log("O computador ganhou!")
+//     } else if (cartaComputador.valor > cartaUsuario.valor && cartaComputador.valor > 21 && cartaUsuario <= 21) {
+//         console.log("O usuário ganhou!")
+//     } else {
+//         console.log("Empate!")
+//     }
+// } else {
+//     console.log("O jogo acabou.")
+// }
