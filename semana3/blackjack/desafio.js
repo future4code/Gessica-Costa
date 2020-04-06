@@ -76,9 +76,33 @@ if (confirm) {
                 }
                 i++
             }
-            alert("Suas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
-                "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
-                "\nVocê venceu!")
+
+            if ((somaUsuario > somaComputador && somaUsuario <= 21) || (somaUsuario < somaComputador && somaComputador > 21 && somaUsuario <= 21)) {
+                alert("Fim de jogo!" +
+                    "\nSuas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                    "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                    "\nVocê venceu!")
+            } else if ((somaComputador > somaUsuario && somaComputador <= 21) || (somaUsuario > somaComputador && somaUsuario > 21 && somaComputador <= 21)) {
+                alert("Fim de jogo!" +
+                    "\nSuas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                    "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                    "\nO computador venceu!")
+            } else if (somaUsuario > somaComputador && somaUsuario > 21 && cartaComputador <= 21) {
+                alert("Fim de jogo!" +
+                    "\nSuas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                    "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                    "\nO computador venceu!")
+            } else if (somaComputador > somaUsuario && somaComputador > 21 && cartaUsuario <= 21) {
+                alert("Fim de jogo!" +
+                    "\nSuas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                    "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                    "\nVocê venceu!")
+            } else {
+                alert("Fim de jogo!" +
+                    "\nSuas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                    "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                    "\nEmpate!")
+            }
         } else {
             alert("Suas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
                 "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
