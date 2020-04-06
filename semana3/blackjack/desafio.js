@@ -12,41 +12,79 @@
  */
 
 console.log("Bem vindo ao jogo de Blackjack!")
-const confirm = prompt("Quer iniciar uma nova rodada? [s/n]")
+confirm("Quer iniciar uma nova rodada?")
+let confirmar = true
+let confirmar2 = true
 let arrayUsuarioV = []
 let arrayComputadorV = []
 let arrayUsuarioT = []
 let arrayComputadorT = []
+let cartasTotais = ""
 let somaUsuario = 0
 let somaComputador = 0
-if (confirm === "s") {
-    for (i = 0; i < 2; i++) {
-        const cartaUsuario = comprarCarta()
-        const cartaComputador = comprarCarta()
-        arrayUsuarioT.push(cartaUsuario.texto)
-        arrayComputadorT.push(cartaComputador.texto)
-        arrayUsuarioV.push(cartaUsuario.valor)
-        arrayComputadorV.push(cartaComputador.valor)
-        somaUsuario += arrayUsuarioV[i]
-        somaComputador += arrayComputadorV[i]
-        while (somaUsuario === 22 || somaComputador === 22) {
+
+if (confirm) {
+    while (confirmar) {
+        for (let i = 0; i < 2; i++) {
             const cartaUsuario = comprarCarta()
             const cartaComputador = comprarCarta()
+            arrayUsuarioT.push(cartaUsuario.texto)
+            arrayComputadorT.push(cartaComputador.texto)
+            arrayUsuarioV.push(cartaUsuario.valor)
+            arrayComputadorV.push(cartaComputador.valor)
+            somaUsuario += arrayUsuarioV[i]
+            somaComputador += arrayComputadorV[i]
+            if (somaUsuario !== 22 || somaComputador !== 22) {
+                confirmar = false
+            }
         }
     }
-    if (somaUsuario === 21) {
-        console.log("O usuário venceu!")
-    } else if (somaComputador === 21) {
-        console.log("O computador venceu!")
+    if (somaUsuario === 21 && somaComputador !== 21) {
+        alert("Suas cartas são: " + arrayUsuarioT[0] + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
+            "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+            "\nVocê venceu!")
+    } else if (somaComputador === 21 && somaUsuario !== 21) {
+        alert("Suas cartas são: " + arrayUsuarioT[0] + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
+            "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+            "\nO computador venceu!")
     } else if (somaUsuario === 21 && somaComputador === 21) {
-        console.log("Empate!")
+        alert("Suas cartas são: " + arrayUsuarioT[0] + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
+            "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+            "\nEmpate!")
+    } else if (somaUsuario === 22 || somaComputador === 22) {
+        alert("Duas cartas foram Ases, vamos repetir")
     } else {
-        let novaCarta = prompt("Suas cartas são: " + (arrayUsuarioT[0]) + " e " + arrayUsuarioT[1] + ". A carta revelada do computador é " + arrayComputadorT[0] + "." +
+        b = confirm("Suas cartas são: " + (arrayUsuarioT[0]) + " " + arrayUsuarioT[1] + ". A carta revelada do computador é " + arrayComputadorT[0] + "." +
             "\n" +
-            "Deseja comprar mais uma carta? [s/n]")
-        if (novaCarta === "s") {
+            "Deseja comprar mais uma carta?")
+        if (b) {
+            while (confirmar2) {
 
+                let i = 2
+                const cartaUsuario2 = comprarCarta()
+                arrayUsuarioT.push(cartaUsuario2.texto)
+                arrayUsuarioV.push(cartaUsuario2.valor)
+                somaUsuario += arrayUsuarioV[i]
+                cartasTotais += arrayUsuarioT + " "
+
+                let a = confirm("Suas cartas são: " + cartasTotais + ". A carta revelada do computador é " + arrayComputadorT[0] + "." +
+                    "\n" +
+                    "Deseja comprar mais uma carta?")
+
+                if (somaUsuario >= 21 || !a) {
+                    confirmar2 = false
+                }
+                i++
+            }
+            alert("Suas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                "\nVocê venceu!")
+        } else {
+            alert("Suas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+                "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
+                "\nVocê venceu!")
         }
+
     }
 } else {
     console.log("Acabou o jogo!")
