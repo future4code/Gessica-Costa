@@ -43,10 +43,6 @@ if (confirm) {
         alert("Suas cartas são: " + arrayUsuarioT[0] + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
             "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
             "\nVocê venceu!")
-    } else if (somaComputador === 21 && somaUsuario !== 21) {
-        alert("Suas cartas são: " + arrayUsuarioT[0] + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
-            "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
-            "\nO computador venceu!")
     } else if (somaUsuario === 21 && somaComputador === 21) {
         alert("Suas cartas são: " + arrayUsuarioT[0] + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
             "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
@@ -54,27 +50,36 @@ if (confirm) {
     } else if (somaUsuario === 22 || somaComputador === 22) {
         alert("Duas cartas foram Ases, vamos repetir")
     } else {
-        b = confirm("Suas cartas são: " + (arrayUsuarioT[0]) + " " + arrayUsuarioT[1] + ". A carta revelada do computador é " + arrayComputadorT[0] + "." +
+        b = confirm("Suas cartas são: " + arrayUsuarioT[0] + " " + arrayUsuarioT[1] + ". A carta revelada do computador é " + arrayComputadorT[0] + "." +
             "\n" +
             "Deseja comprar mais uma carta?")
         if (b) {
+            let i = 2
             while (confirmar2) {
-
-                let i = 2
+                cartasTotais = ""
+                if (somaUsuario >= 21) {
+                    confirmar2 = false
+                    break
+                }
                 const cartaUsuario2 = comprarCarta()
                 arrayUsuarioT.push(cartaUsuario2.texto)
                 arrayUsuarioV.push(cartaUsuario2.valor)
                 somaUsuario += arrayUsuarioV[i]
                 cartasTotais += arrayUsuarioT + " "
+                i++
+
+                if (somaUsuario >= 21) {
+                    confirmar2 = false
+                    break
+                }
 
                 let a = confirm("Suas cartas são: " + cartasTotais + ". A carta revelada do computador é " + arrayComputadorT[0] + "." +
                     "\n" +
                     "Deseja comprar mais uma carta?")
 
-                if (somaUsuario >= 21 || !a) {
+                if (!a) {
                     confirmar2 = false
                 }
-                i++
             }
 
             if ((somaUsuario > somaComputador && somaUsuario <= 21) || (somaUsuario < somaComputador && somaComputador > 21 && somaUsuario <= 21)) {
@@ -104,7 +109,7 @@ if (confirm) {
                     "\nEmpate!")
             }
         } else {
-            alert("Suas cartas são: " + cartasTotais + ". Sua pontuação é: " + somaUsuario +
+            alert("Suas cartas são: " + arrayUsuarioT[0] + " " + arrayUsuarioT[1] + ". Sua pontuação é: " + somaUsuario +
                 "\nAs cartas do computador são: " + arrayComputadorT[0] + arrayComputadorT[1] + ". A pontuação do computador é: " + somaComputador +
                 "\nVocê venceu!")
         }
