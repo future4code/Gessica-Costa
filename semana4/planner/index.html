@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="index.js" defer></script>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <input id="addTarefa" type="text" placeholder="Adicione sua tarefa aqui">
+        <select id="diasSemana">
+        <option value="segunda">Segunda</option>
+        <option value="terca">Terca</option>
+        <option value="quarta">Quarta</option>
+        <option value="quinta">Quinta</option>
+        <option value="sexta">Sexta</option>
+        <option value="sabado">Sábado</option>
+        <option value="domingo">Domingo</option>
+      </select>
+        <button id="botao" onclick="adicionarTarefa()">Adicionar</button>
+    </header>
+    <section id="container">
+        <div id="segunda">
+            <h3>Segunda</h3>
+            <ul id="lista-segunda"></ul>
+        </div>
+        <div id="terca">
+            <h3>Terca</h3>
+            <ul id="lista-terca"></ul>
+        </div>
+        <div id="quarta">
+            <h3>Quarta</h3>
+            <ul id="lista-quarta"></ul>
+        </div>
+        <div id="quinta">
+            <h3>Quinta</h3>
+            <ul id="lista-quinta"></ul>
+        </div>
+        <div id="sexta">
+            <h3>Sexta</h3>
+            <ul id="lista-sexta"></ul>
+        </div>
+        <div id="sabado">
+            <h3>Sabado</h3>
+            <ul id="lista-sabado"></ul>
+        </div>
+        <div id="domingo">
+            <h3>Domingo</h3>
+            <ul id="lista-domingo"></ul>
+        </div>
+    </section>
+</body>
+
+</html>
