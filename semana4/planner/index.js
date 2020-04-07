@@ -1,6 +1,7 @@
 function adicionarTarefa() {
     const tarefa = document.getElementById("addTarefa")
     const semana = document.getElementById("diasSemana")
+    const hora = document.getElementById("hora").value
     const novaTarefa = tarefa.value
     const diaSemana = semana.value
     let listaTarefas = ""
@@ -12,31 +13,31 @@ function adicionarTarefa() {
         switch (diaSemana) {
             case "segunda":
                 listaTarefas = document.getElementById("lista-segunda");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
             case "terca":
                 listaTarefas = document.getElementById("lista-terca");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
             case "quarta":
                 listaTarefas = document.getElementById("lista-quarta");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
             case "quinta":
                 listaTarefas = document.getElementById("lista-quinta");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
             case "sexta":
                 listaTarefas = document.getElementById("lista-sexta");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
             case "sabado":
                 listaTarefas = document.getElementById("lista-sabado");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
             case "domingo":
                 listaTarefas = document.getElementById("lista-domingo");
-                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + novaTarefa + "</li>";
+                listaTarefas.innerHTML += "<li onclick='riscar(this)'>" + hora + ": " + novaTarefa + "</li>";
                 break;
         }
     }
