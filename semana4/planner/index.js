@@ -39,28 +39,10 @@ function adicionarTarefa() {
                 listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>";
                 break;
         }
-        // if (diaSemana === "segunda") {
-        //     const listaTarefas = document.getElementById("lista-segunda")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // } else if (diaSemana === "terca") {
-        //     const listaTarefas = document.getElementById("lista-terca")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // } else if (diaSemana === "quarta") {
-        //     const listaTarefas = document.getElementById("lista-quarta")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // } else if (diaSemana === "quinta") {
-        //     const listaTarefas = document.getElementById("lista-quinta")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // } else if (diaSemana === "sexta") {
-        //     const listaTarefas = document.getElementById("lista-sexta")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // } else if (diaSemana === "sabado") {
-        //     const listaTarefas = document.getElementById("lista-sabado")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // } else if (diaSemana === "domingo") {
-        //     const listaTarefas = document.getElementById("lista-domingo")
-        //     listaTarefas.innerHTML += "<li>" + novaTarefa + "</li>"
-        // }
     }
+}
 
+function apagarTarefas() {
+    for (let i = 0; i < 7; i++)
+        document.getElementsByTagName("UL")[i].innerHTML = ""
 }
