@@ -10,6 +10,7 @@ function adicionarTarefa() {
     if (novaTarefa === " " || novaTarefa == "") {
         alert("Insira um item")
     } else {
+
         switch (diaSemana) {
             case "segunda":
                 listaTarefas = document.getElementById("lista-segunda");
@@ -44,7 +45,11 @@ function adicionarTarefa() {
 }
 
 function riscar(elemento) {
-    elemento.style.textDecoration = "line-through"
+    if (elemento.style.textDecoration === "line-through") {
+        elemento.style.textDecoration = "none"
+    } else {
+        elemento.style.textDecoration = "line-through"
+    }
 }
 
 function apagarTarefas() {
