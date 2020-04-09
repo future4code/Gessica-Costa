@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="index.js" defer></script>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="cadastro">
+        <h1>Controlador de Despesas</h1>
+        <h3>Cadastrar despesa</h3>
+        <label>Valor</label>
+        <input type="text" id="valor" placeholder="Digite o valor em reais">
+        <br />
+        <label>Tipo (Casa, Festas, Viagem, Alimentação, Transporte, Outros)</label>
+        <select name="despesas" id="despesas">
+          <option value="escolha" id="escolha">--Escolha uma opção de despesa--</option>
+          <option value="casa">Depesas de Casa</option>
+          <option value="festas">Depesas de Festas</option>
+          <option value="viagem">Depesas de Viagem</option>
+          <option value="alimentacao">Depesas de Alimentação</option>
+          <option value="transporte">Depesas de Transporte</option>
+          <option value="outros">Outros</option>
+        </select>
+        <br />
+        <label>Descrição</label>
+        <input type="text" id="descricao" placeholder="Digite a descrição">
+        <br />
+        <button onclick="novaDespesa()">Cadastrar Despesa</button>
+    </section>
+    <section>
+        <h1>Despesas Detalhadas</h1>
+        <label>Tipo (Casa, Festas, Viagem, Alimentação, Transporte, Outros)</label>
+        <br />
+        <select name="despesas" id="despesas">
+          <option value="null">--Escolha uma opção de despesa--</option>
+          <option value="casa">Depesas de Casa</option>
+          <option value="festas">Depesas de Festas</option>
+          <option value="viagem">Depesas de Viagem</option>
+          <option value="alimentacao">Depesas de Alimentação</option>
+          <option value="transporte">Depesas de Transporte</option>
+          <option value="outros">Outros</option>
+        </select>
+        <br />
+        <label>Valor Mínimo</label>
+        <input type="text" id="valorMinimo">
+        <br />
+        <label>Valor Máximo</label>
+        <input type="text" id="valorMaximo">
+        <br />
+        <button>Filtrar</button>
+        <button>Limpar Filtros</button>
+    </section>
+    <section>
+        <h1>Extrato</h1>
+        <h3>Valor Total:</h3>
+    </section>
+</body>
+
+</html>
