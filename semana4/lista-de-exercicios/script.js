@@ -39,4 +39,11 @@
     menor que 25. E assim por diante. numero1 será o menor valor e numero2 o maior valor.
     Os valores impressos serão: numero1 = -10 e numero2 = 1590.
 
+    Exercícios de lógica de programação
+    
+    1. a) false
+       b) false
+       c) true
+       d) true
+       e) true
 */
