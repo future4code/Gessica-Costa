@@ -40,10 +40,23 @@
     Os valores impressos serão: numero1 = -10 e numero2 = 1590.
 
     Exercícios de lógica de programação
-    
+
     1. a) false
        b) false
        c) true
        d) true
        e) true
-*/
+
+    2. O código não funciona, porque i não está aumentando de valor, é sempre zero,
+    e no while i <= à variável quantidadeDeNumerosPares resulta sempre em um número a mais por i
+    começar em zero. Se essa variável for 3, será impresso 0, 2, 4, 6.
+       
+    Código corrigido:
+    */
+function numerosPares(quantidadeDeNumerosPares) {
+    let i = 0
+    while (i < quantidadeDeNumerosPares) {
+        console.log(i * 2)
+        i++
+    }
+}
