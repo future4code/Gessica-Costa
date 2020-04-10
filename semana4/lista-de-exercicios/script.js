@@ -25,4 +25,9 @@
     O segundo valor será o alert "TIPO DE INVESTIMENTO INFORMADO INCORRETO!", porque nenhum
     dos cases do switch tem "Tesouro Direto", então é retornado o valor do default.
 
+    3. São declaradas três arrays do tipo const, a primeira com elementos e as outras duas vazias.
+    No for a variável elemento irá alterar em cada iteração para cada elemento do array numeros, e se
+    o elemento dividido por 2 der zero, ou seja, for par, será adicionado no array1, se não, será adicionado
+    no array2. Fora do for, será impresso no console "Quantidade total de números 14" "6" "8".
+
 */
