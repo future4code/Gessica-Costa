@@ -30,4 +30,13 @@
     o elemento dividido por 2 der zero, ou seja, for par, será adicionado no array1, se não, será adicionado
     no array2. Fora do for, será impresso no console "Quantidade total de números 14" "6" "8".
 
+    4. São declaradas três variáveis, um array com elementos e duas do tipo let, uma infinity e outro zero.
+    O for "varre" todos os elementos do array. Se o elemento for menor que a variável numero1, que é igual a infinity,
+    numero1 será igual ao elemento. No segundo if, se o elemento for maior que o numero2 (0), numero2 será
+    igual ao elemento. No final essas duas variáveis são impressas no console.
+    Na primeira iteração numero1 será mudado para 25, pois infinito é maior que 25; e numero2 também será
+    25, pois 25 é maior que 0. Na segunda iteração numero1 será 12 e numero2 continuará sendo 25, pois 12 é
+    menor que 25. E assim por diante. numero1 será o menor valor e numero2 o maior valor.
+    Os valores impressos serão: numero1 = -10 e numero2 = 1590.
+
 */
