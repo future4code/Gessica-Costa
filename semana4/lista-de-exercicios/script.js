@@ -60,3 +60,13 @@ function numerosPares(quantidadeDeNumerosPares) {
         i++
     }
 }
+// 3.
+function tipoTriangulo(ladoA, ladoB, ladoC) {
+    if (ladoA !== ladoB && ladoA !== ladoC && ladoB !== ladoC) {
+        console.log("O triângulo é Escaleno")
+    } else if (ladoA == ladoB && ladoA == ladoC && ladoB == ladoC) {
+        console.log("O triângulo é Equilátero")
+    } else {
+        console.log("O triângulo é Isósceles")
+    }
+}
