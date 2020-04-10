@@ -70,3 +70,34 @@ function tipoTriangulo(ladoA, ladoB, ladoC) {
         console.log("O triângulo é Isósceles")
     }
 }
+
+// 4.
+function comparacaoNumeros(num1, num2) {
+    if (num1 > num2) {
+        console.log("O maior é: " + num1)
+    } else if (num1 < num2) {
+        console.log("O maior é: " + num2)
+    } else {
+        console.log("Os números são iguais: " + num1 + " e " + num2)
+    }
+
+    if (num1 % num2 === 0) {
+        console.log(num1 + " é divisível por " + num2)
+    }
+    if (num2 % num1 === 0) {
+        console.log(num2 + " é divisível por " + num1)
+    }
+    if (num1 % num2 !== 0) {
+        console.log(num1 + " não é divisível por " + num2)
+    }
+    if (num2 % num1 !== 0) {
+        console.log(num2 + " não é divisível por " + num1)
+    }
+
+    const diferenca = num1 - num2
+    if (diferenca < 0) {
+        console.log("A diferença entre eles é " + diferenca * -1)
+    } else {
+        console.log("A diferença entre eles é " + diferenca)
+    }
+}
