@@ -188,3 +188,19 @@ const filmeFavotito = () => {
         ", de " + filme.ano + ", dirigido por " + filme.diretor +
         " e estrelado por " + filme.elenco)
 }
+
+// 4.
+const pessoa = {
+    nome: "Ana",
+    idade: 25,
+    email: "ana@gmail.com",
+    endereco: "Rua aculá,300"
+}
+
+const anonimizarPessoa = (pessoa) => {
+    const pessoaAnonima = {
+        ...pessoa,
+        nome: 'ANÔNIMO'
+    }
+    return pessoaAnonima
+}
