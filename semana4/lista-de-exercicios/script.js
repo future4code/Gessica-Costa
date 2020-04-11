@@ -152,3 +152,14 @@ console.log(segundosNumeros(array))
 // 2.
 const alerta = () => alert("Hello Lambenu_")
 alerta()
+
+/*Exercícios de Objetos
+
+1. Arrays são variáveis que permitem guardar mais de uma informação
+ao mesmo tempo e são utilizadas quando queremos guardar mais de um valor
+no mesmo lugar de forma ordenada.
+Objetos são estruturas que permitem guardar informações de maneira
+mais próxima ao mundo real. Possuem propriedade, chave e valor.
+São utilizados quando podemos separar por chaves e valores, e queremos
+usar essa mesma chave para mais de um caso.
+*/
