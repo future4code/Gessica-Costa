@@ -259,3 +259,24 @@ const criancas = arrayPessoas.filter(pessoas => {
         return true
     }
 })
+
+// 3.
+const array3 = [1, 2, 3, 4, 5, 6]
+    // a)
+const multiplicaDois = (array3).map((elemento, index, array) => {
+    return elemento * 2
+})
+
+// b)
+const multiplicaTres = (array3).map((elemento, index, array) => {
+    return (String(elemento * 3))
+})
+
+// c)
+const parOuImpar = array3.map((elemento, index, array) => {
+    if (elemento % 2 === 0) {
+        return elemento + " é par"
+    } else {
+        return elemento + " é ímpar"
+    }
+})
