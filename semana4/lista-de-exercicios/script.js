@@ -204,3 +204,25 @@ const anonimizarPessoa = (pessoa) => {
     }
     return pessoaAnonima
 }
+
+/*---------------------------------------------------------------------
+    Aula 16
+
+    Exercícios de Funções de array
+
+    1. Informando o index exato, usando .length, usando for e usando for of.
+ */
+const percorrerArray = (array) => {
+    let tamanho = array.length
+    console.log("O elemento do index 0 é " + array[0])
+
+    console.log("Utilizando for:\n")
+    for (let i = 0; i < tamanho; i++) {
+        console.log(array[i])
+    }
+
+    console.log("Utilizando for of:\n")
+    for (let elemento of array) {
+        console.log(elemento)
+    }
+}
