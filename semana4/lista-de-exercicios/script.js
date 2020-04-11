@@ -151,7 +151,8 @@ console.log(segundosNumeros(array))
 
 // 2.
 const alerta = () => alert("Hello Lambenu_")
-alerta()
+    // alerta()
+    // Para invocar a função alerta descomente a linha 154.
 
 /*Exercícios de Objetos
 
@@ -162,4 +163,15 @@ Objetos são estruturas que permitem guardar informações de maneira
 mais próxima ao mundo real. Possuem propriedade, chave e valor.
 São utilizados quando podemos separar por chaves e valores, e queremos
 usar essa mesma chave para mais de um caso.
+
+2.
 */
+function criaRetangulo(lado1, lado2) {
+    const retangulo = {
+        largura: lado1,
+        altura: lado2,
+        perimetro: 2 * (lado1 + lado2),
+        area: lado1 * lado2
+    }
+    return retangulo
+}
