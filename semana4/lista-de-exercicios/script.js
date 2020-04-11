@@ -175,3 +175,16 @@ function criaRetangulo(lado1, lado2) {
     }
     return retangulo
 }
+
+// 3.
+const filmeFavotito = () => {
+    const filme = {
+        titulo: "Sr. & Sra. Smith",
+        ano: 2005,
+        diretor: "Doug Liman",
+        elenco: ["Angelina Jolie", "Brad Pitt"],
+    }
+    console.log("Venha assistir ao filme " + filme.titulo +
+        ", de " + filme.ano + ", dirigido por " + filme.diretor +
+        " e estrelado por " + filme.elenco)
+}
