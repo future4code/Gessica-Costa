@@ -226,3 +226,36 @@ const percorrerArray = (array) => {
         console.log(elemento)
     }
 }
+
+// 2.
+const arrayPessoas = [
+        { nome: "Pedro", idade: 20 },
+        { nome: "João", idade: 10 },
+        { nome: "Paula", idade: 12 },
+        { nome: "Artur", idade: 89 }
+    ]
+    // a)
+const adultos = (array) => {
+        let arrayAdultos = []
+        for (let elemento of array) {
+            if (elemento.idade >= 20) {
+                arrayAdultos.push(elemento)
+            }
+        }
+        console.log(arrayAdultos)
+    }
+    // ou
+const adultos2 = arrayPessoas.filter(pessoas => {
+    let arrayAdultos = []
+    if (pessoas.idade >= 20) {
+        return true
+    }
+})
+
+// b)
+const criancas = arrayPessoas.filter(pessoas => {
+    let arrayCriancas = []
+    if (pessoas.idade < 20) {
+        return true
+    }
+})
