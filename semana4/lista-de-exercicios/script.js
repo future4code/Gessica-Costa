@@ -101,3 +101,50 @@ function comparacaoNumeros(num1, num2) {
         console.log("A diferença entre eles é " + diferenca)
     }
 }
+
+/*---------------------------------------------------------------------
+    Aula 15
+
+    Exercícios de Funções
+
+    1.
+ */
+function segundosNumeros(array) {
+    let maiorNumero = 0
+    let segundoMaiorNumero = 0
+    let menorNumero = Infinity
+    let segundoMenorNumero = Infinity
+    let novoArray = []
+    let indexMenor
+    let indexMaior
+
+    for (let numero of array) {
+        if (numero > maiorNumero) {
+            maiorNumero = numero
+        }
+        if (numero < menorNumero) {
+            menorNumero = numero
+        }
+        novoArray.push(numero)
+    }
+
+    indexMenor = novoArray.indexOf(menorNumero)
+    array = novoArray.splice(indexMenor, 1)
+    indexMaior = novoArray.indexOf(maiorNumero)
+    array = novoArray.splice(indexMaior, 1)
+
+    for (let numero of novoArray) {
+        if (numero > segundoMaiorNumero) {
+            segundoMaiorNumero = numero
+        }
+        if (numero < segundoMenorNumero) {
+            segundoMenorNumero = numero
+        }
+    }
+
+    console.log(indexMaior, indexMenor, novoArray)
+    console.log("O segundo maior número é " + segundoMaiorNumero)
+    console.log("O segundo menor número é " + segundoMenorNumero)
+}
+const array = [5, 1, 6, 2, 8, 10, 4, 0]
+console.log(segundosNumeros(array))
