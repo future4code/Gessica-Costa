@@ -303,3 +303,29 @@ const pessoasNaoPermitidas = pessoas.filter((pessoa, index, array) => {
         return true
     }
 })
+
+// 5.
+const consultas = [
+    { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+    { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+    { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+    { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+const mensagens = consultas.map((pessoa, index, array) => {
+    if (pessoa.genero === "feminino") {
+        pessoa.genero = "Sra."
+        pessoa.genero2 = "lembrá-la"
+    } else {
+        pessoa.genero = "Sr."
+        pessoa.genero2 = "lembrá-lo"
+    }
+    if (pessoa.cancelada === false) {
+        return `Olá, ${ pessoa.genero } ${ pessoa.nome }. Estamos enviando esta mensagem para ` +
+            `${ pessoa.genero2 } da sua consulta no dia ${ pessoa.dataDaConsulta }. Por favor, acuse ` +
+            `o recebimento deste e-mail.`
+    } else if (pessoa.cancelada === true) {
+        return `Olá, ${ pessoa.genero } ${ pessoa.nome }. Infelizmente, sua consulta marcada ` +
+            `para o dia ${ pessoa.dataDaConsulta } foi cancelada. Se quiser, pode entrar em ` +
+            `contato conosco para remarcá-la.`
+    }
+})
