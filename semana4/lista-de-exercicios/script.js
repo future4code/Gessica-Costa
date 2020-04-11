@@ -148,3 +148,7 @@ function segundosNumeros(array) {
 }
 const array = [5, 1, 6, 2, 8, 10, 4, 0]
 console.log(segundosNumeros(array))
+
+// 2.
+const alerta = () => alert("Hello Lambenu_")
+alerta()
