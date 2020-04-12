@@ -2,3 +2,8 @@ section {
     border: 1px solid rgb(240, 210, 167);
     margin: 10px 0;
 }
+
+section div {
+    display: flex;
+    flex-direction: column-reverse;
+}

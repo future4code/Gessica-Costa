@@ -15,7 +15,7 @@
         <h1>Controlador de Despesas</h1>
         <h3>Cadastrar despesa</h3>
         <label>Valor</label>
-        <input type="text" id="valor" placeholder="Digite o valor em reais">
+        <input type="number" id="valor" placeholder="Digite o valor em reais">
         <br />
         <label>Tipo (Casa, Festas, Viagem, Alimentação, Transporte, Outros)</label>
         <select name="despesas" id="despesas">
@@ -33,12 +33,12 @@
         <br />
         <button onclick="novaDespesa()">Cadastrar Despesa</button>
     </section>
-    <section>
+    <section id="despesasDetalhadas">
         <h1>Despesas Detalhadas</h1>
         <label>Tipo (Casa, Festas, Viagem, Alimentação, Transporte, Outros)</label>
         <br />
-        <select name="despesas" id="despesas">
-          <option value="null">--Escolha uma opção de despesa--</option>
+        <select name="despesas" id="despesasDetalhe">
+          <option value="escolha">--Escolha uma opção de despesa--</option>
           <option value="casa">Depesas de Casa</option>
           <option value="festas">Depesas de Festas</option>
           <option value="viagem">Depesas de Viagem</option>
@@ -48,17 +48,21 @@
         </select>
         <br />
         <label>Valor Mínimo</label>
-        <input type="text" id="valorMinimo">
+        <input type="number" id="valorMinimo">
         <br />
         <label>Valor Máximo</label>
-        <input type="text" id="valorMaximo">
+        <input type="number" id="valorMaximo">
         <br />
-        <button>Filtrar</button>
-        <button>Limpar Filtros</button>
+        <button onclick="entradaFiltros()">Filtrar</button>
+        <button onclick="imprimeAposFiltro()">Limpar Filtros</button>
+        <h2>Despesas:</h2>
+        <div id="listaDepesas"></div>
     </section>
     <section>
         <h1>Extrato</h1>
-        <h3>Valor Total:</h3>
+        <label><b>Valor Total:</b></label>
+        <label id="valorTotal"></label>
+        <div id="extrato"></div>
     </section>
 </body>
 
