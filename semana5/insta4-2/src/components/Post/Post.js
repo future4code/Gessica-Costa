@@ -1,5 +1,4 @@
 import React from 'react'
-import './Post.css'
 
 import { IconeComContador } from '../IconeComContador/IconeComContador'
 
@@ -10,7 +9,51 @@ import iconeSaveBranco from '../../img/favoritoBranco.png';
 import iconeSavePreto from '../../img/favoritoPreto.png';
 import iconeCompartilhar from '../../img/share.webp'
 import { SecaoComentario } from '../SecaoComentario/SecaoComentario'
-import {SecaoCompartilhar} from '../SecaoCompartilhar/SecaoCompartilhar'
+import { SecaoCompartilhar } from '../SecaoCompartilhar/SecaoCompartilhar'
+import styled from 'styled-components'
+
+const PostContainer = styled.div`
+  border: 1px solid gray;
+  width: 300px;
+  margin-bottom: 10px;
+`
+const PostHeader = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+`
+
+const PostFooter = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+`
+
+const UserPhoto = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+`
+const PostFoto = styled.img`
+  width: ${props => {
+    if(props.size === 'big') {
+      return '100%'
+    } else if(props.size === 'small'){
+      return '25px'
+    }
+  }}
+`
 
 class Post extends React.Component {
   state = {
@@ -93,39 +136,39 @@ class Post extends React.Component {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario} />
     }
 
-    if(this.state.compartilhar) {
+    if (this.state.compartilhar) {
       componenteCompartilhar = <SecaoCompartilhar aoCompartilhar={this.aoCompartilhar} />
     }
 
-    return <div className={'post-container'}>
-      <div className={'header'}>
-        <div className={'post-header'}>
-          <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'} />
+    return <PostContainer>
+      <Header>
+        <PostHeader>
+          <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'} />
           <p>{this.props.nomeUsuario}</p>
-        </div>
-        <img className={'user-photo'} onClick={this.onClickSalvo} src={iconeSave} alt={'Ícone de Salvo'} />
-      </div>
+        </PostHeader>
+        <UserPhoto onClick={this.onClickSalvo} src={iconeSave} alt={'Ícone de Salvo'} />
+      </Header>
 
-      <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'} />
+      <PostFoto size={'big'} src={this.props.fotoPost} alt={'Imagem do post'} />
 
-      <div className={'post-footer'}>
+      <PostFooter>
         <IconeComContador
           icone={iconeCurtida} //imagem de coração, vem do if, vai p/ o componente IconeComContador
           onClickIcone={this.onClickCurtida}
           valorContador={this.state.numeroCurtidas}
         />
 
-        <img className={'share-icon'} onClick={this.onCLickCompartilhar} src={iconeCompartilhar} alt={'Ícone de Compartilhamento'} />
-        
+        <PostFoto size={'small'} onClick={this.onCLickCompartilhar} src={iconeCompartilhar} alt={'Ícone de Compartilhamento'} />
+
         <IconeComContador
           icone={iconeComentario}
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
-      </div>
+      </PostFooter>
       {componenteCompartilhar}
       {componenteComentario}
-    </div>
+    </PostContainer>
   }
 }
 

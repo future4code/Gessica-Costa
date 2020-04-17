@@ -10,7 +10,7 @@ export class SecaoComentario extends Component {
 		this.setState({valorComentario: event.target.value})
 	}
 
-	render() {
+	render(props) {
 		console.log(this.state.valorComentario)
 		return <div className={'comment-container'}>
 			<input
