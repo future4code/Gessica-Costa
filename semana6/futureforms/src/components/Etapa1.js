@@ -1,28 +1,27 @@
 import React from 'react'
 import { Etapa2 } from './Etapa2'
+import { PerguntaAberta } from './PerguntaAberta'
+import { PerguntaFechada } from './PerguntaFechada'
 
 export class Etapa1 extends React.Component {
     render() {
         return (
             <div>
-                <h1>ETAPA 1 - Dados gerais</h1>
+                <h3>ETAPA 1 - Dados gerais</h3>
                 <form>
-                    <p>1. Qual o seu nome?</p>
-                    <input/>
-                    <p>1. Qual sua idade?</p>
-                    <input/>
-                    <p>1. Qual seu email?</p>
-                    <input/>
-                    <p>1. Qual a sua escolaridade?</p>
-                    <select id="escolaridade">
-                        <option value="EnsinoMedioIncompleto">Ensino Médio Incompleto</option>
-                        <option value="EnsinoMedioCompleto">Ensino Médio Completo</option>
-                        <option value="EnsinoSuperiorIncompleto">Ensino Superior Incompleto</option>
-                        <option value="EnsinoSuperiorCompleto">Ensino Superior Completo</option>
-                    </select>
-                    <br />
-                    <br />
-                    <button onClick = {this.props.irParaEtapa2}>Próxima etapa</button>
+                    <PerguntaAberta pergunta={"1. Qual o seu nome?"} />
+                    <input />
+                    <PerguntaAberta pergunta={"2. Qual sua idade?"} />
+                    <input />
+                    <PerguntaAberta pergunta={"3. Qual seu email?"} />
+                    <input />
+                    <PerguntaFechada pergunta={"4. Qual a sua escolaridade?"}
+                    opcoes={[
+                        "Ensino médio incompleto",
+                        "Ensino médio completo",
+                        "Ensino superior incompleto",
+                        "Ensino superior completo"
+                    ]} />
                 </form>
             </div >
         )

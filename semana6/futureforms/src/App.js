@@ -7,36 +7,31 @@ import { Etapa3 } from './components/Etapa3';
 import { Etapa4 } from './components/Etapa4';
 
 class App extends React.Component {
-
+  
   state = {
-    secao: 'Etapa1'
+    secao: 1
   }
-
-  irParaEtapa1 = () => {
-    this.setState({ secao: 'Etapa1' })
-  }
-  irParaEtapa2 = () => {
-    this.setState({ secao: 'Etapa2' })
-  }
-  irParaEtapa3 = () => {
-    this.setState({ secao: 'Etapa3' })
-  }
-  irParaEtapa4 = () => {
-    this.setState({ secao: 'Etapa4' })
+  
+  botaoEscolhas = () => {
+   const etapaAtual = this.state.secao
+   console.log(etapaAtual)
+   const etapaSeguinte = etapaAtual + 1
+   
+   this.setState({secao: etapaSeguinte})
   }
 
   secaoEscolhida = () => {
     switch (this.state.secao) {
-      case 'Etapa1':
-        return <Etapa1 irParaEtapa2={this.irParaEtapa2}/>
+      case 1:
+        return <Etapa1 />
 
-      case 'Etapa2':
-        return <Etapa2 irParaEtapa3={this.irParaEtapa3} />
+      case 2:
+        return <Etapa2 />
 
-      case 'Etapa3':
-        return <Etapa3 irParaEtapa4={this.irParaEtapa4} />
+      case 3:
+        return <Etapa3 />
 
-      case 'Etapa4':
+      case 4:
         return <Etapa4 />
 
       default:
@@ -45,11 +40,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("Função: ",this.secaoEscolhida)
-    console.log("Seção: ",this.state.secao)
+
     return (
       <div className="App">
         {this.secaoEscolhida()}
+        <br />
+        <button onClick={this.botaoEscolhas}>Próxima etapa</button>
       </div>
     );
   }

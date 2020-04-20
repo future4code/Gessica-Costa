@@ -1,18 +1,15 @@
 import React from 'react'
+import { PerguntaAberta } from './PerguntaAberta'
 
 export class Etapa2 extends React.Component {
     render() {
         return (
             <div>
-                <h1>ETAPA 2 - Informações do Ensino Superior</h1>
-                <p>Qual o curso?</p>
+                <h3>ETAPA 2 - Informações do Ensino Superior</h3>
+                <PerguntaAberta pergunta={"1. Qual o curso?"} />
                 <input />
-                <p>Qual a unidade de ensino?</p>
+                <PerguntaAberta pergunta={"2. Qual a unidade de ensino?"} />
                 <input />
-                <br />
-                <br />
-                <button onClick={this.props.irParaEtapa3}>Próxima etapa</button>
-
             </div>
         )
     }
