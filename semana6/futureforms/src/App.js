@@ -28,24 +28,25 @@ class App extends React.Component {
   secaoEscolhida = () => {
     switch (this.state.secao) {
       case 'Etapa1':
-        return <Etapa1 />
+        return <Etapa1 irParaEtapa2={this.irParaEtapa2}/>
 
       case 'Etapa2':
-        return <Etapa2 />
+        return <Etapa2 irParaEtapa3={this.irParaEtapa3} />
 
       case 'Etapa3':
-        return <Etapa3 />
+        return <Etapa3 irParaEtapa4={this.irParaEtapa4} />
 
       case 'Etapa4':
         return <Etapa4 />
 
       default:
         return <div>Escolha uma Etapa</div>
-        break;
     }
   }
 
   render() {
+    console.log("Função: ",this.secaoEscolhida)
+    console.log("Seção: ",this.state.secao)
     return (
       <div className="App">
         {this.secaoEscolhida()}

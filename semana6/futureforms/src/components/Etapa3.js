@@ -4,7 +4,7 @@ export class Etapa3 extends React.Component {
     render() {
         return (
             <div>
-                <h1>ETAPA 3 - Informações sobre quem não cursou ensino superior ou está cursando</h1>
+                <h1>ETAPA 3 - Informações gerais de ensino</h1>
                 <p>Por que você não terminou um curso de graduação?</p>
                 <input />
                 <p>Você fez algum curso complementar?</p>
@@ -14,6 +14,10 @@ export class Etapa3 extends React.Component {
                     <option value="TecnicoEIngles">Curso de Técnico e Inglês</option>
                     <option value="NãoFezCursoComplementar">Não fiz cruso complementar</option>
                 </select>
+                <br />
+                    <br />
+                    <button onClick = {this.props.irParaEtapa4}>Próxima etapa</button>
+                
             </div>
         )
     }
