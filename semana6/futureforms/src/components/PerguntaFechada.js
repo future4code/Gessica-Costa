@@ -5,9 +5,10 @@ export class PerguntaFechada extends React.Component {
         let opcoes = this.props.opcoes
 
         const selecao = opcoes.map((op, index) => {
-            return <option id={index} key={index} value={index}>{op}</option>
+            return <option key={index} value={index}>{op}</option>
         })
-console.log("selecao", selecao.id)
+
+console.log(selecao[0].key)
         return (
             <div>
                 <p>{this.props.pergunta}</p>

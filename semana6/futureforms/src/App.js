@@ -14,9 +14,9 @@ class App extends React.Component {
   
   botaoEscolhas = () => {
    const etapaAtual = this.state.secao
-   console.log(etapaAtual)
+   //console.log(etapaAtual)
    const etapaSeguinte = etapaAtual + 1
-   
+
    this.setState({secao: etapaSeguinte})
   }
 
