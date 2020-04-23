@@ -1,0 +1,18 @@
+.smallcard-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    height: 60px;
+}
+
+.smallcard-container label:first-of-type {
+    font-weight: bold;
+}
+
+.smallcard-container > img {
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
