@@ -8,7 +8,7 @@ const TarefaList = styled.ul`
 `
 
 const Tarefa = styled.li`
-  text-align: ${({ completa}) => (completa ? 'left' : 'right')};
+  text-align: ${({ completa }) => (completa ? 'left' : 'right')};
   text-decoration: ${({ completa }) => (completa ? 'line-through' : 'none')};
 `
 
@@ -18,11 +18,15 @@ const InputsContainer = styled.div`
   gap: 10px;
 `
 
+const TarefaCompleta = styled.div``
+
 class App extends React.Component {
   state = {
     tarefas: [],
     inputValue: '',
-    filter: ''
+    filter: '',
+    tarefaPendente: "",
+    tarefaCompleta: ""
   }
 
   componentDidUpdate() {
@@ -55,6 +59,22 @@ class App extends React.Component {
     })
   }
 
+  oganizaTarefa = () => {
+    let tarefasPendentes
+    const tarefasCompletas = this.state.tarefas.filter(tarefa => {
+      if (tarefa.completa) {
+        return tarefa
+      } else {
+        tarefasPendentes = tarefa
+      }
+
+    })
+    this.setState({
+      tarefaCompleta: tarefasCompletas,
+      tarefasPendentes: tarefasPendentes
+    })
+  }
+
   selectTarefa = (id) => {
     const novoPercorrer = this.state.tarefas.map(tarefa => {
       if (id === tarefa.id) {
@@ -68,15 +88,16 @@ class App extends React.Component {
       }
     })
     this.setState({ tarefas: novoPercorrer })
+    //this.oganizaTarefa()
   }
 
   apagaTarefa = (id) => {
     const novoPercorrer = this.state.tarefas.filter(tarefa => {
-      if(id !== tarefa.id) {
+      if (id !== tarefa.id) {
         return tarefa
       }
     })
-    this.setState({ tarefas: novoPercorrer})
+    this.setState({ tarefas: novoPercorrer })
   }
 
   onChangeFilter = (event) => {
@@ -125,6 +146,9 @@ class App extends React.Component {
               </Tarefa>
             )
           })}
+          <TarefaCompleta>
+            {this.state.tarefaCompleta}
+          </TarefaCompleta>
         </TarefaList>
       </div>
     )
