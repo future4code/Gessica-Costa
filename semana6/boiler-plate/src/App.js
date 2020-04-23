@@ -17,9 +17,6 @@ const InputsContainer = styled.div`
   grid-auto-flow: column;
   gap: 10px;
 `
-
-const TarefaCompleta = styled.div``
-
 class App extends React.Component {
   state = {
     tarefas: [],
@@ -88,7 +85,15 @@ class App extends React.Component {
       }
     })
     this.setState({ tarefas: novoPercorrer })
-    //this.oganizaTarefa()
+  }
+
+  apagaTarefa = (id) => {
+    const novoPercorrer = this.state.tarefas.masp(tarefa => {
+      if(id !== tarefa.id) {
+        return tarefa
+      }
+    })
+    this.setState({ tarefas: novoPercorrer})
   }
 
   apagaTarefa = (id) => {
