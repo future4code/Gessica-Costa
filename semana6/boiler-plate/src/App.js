@@ -8,7 +8,7 @@ const TarefaList = styled.ul`
 `
 
 const Tarefa = styled.li`
-  text-align: left;
+  text-align: ${({ completa}) => (completa ? 'left' : 'right')};
   text-decoration: ${({ completa }) => (completa ? 'line-through' : 'none')};
 `
 
@@ -70,6 +70,15 @@ class App extends React.Component {
     this.setState({ tarefas: novoPercorrer })
   }
 
+  apagaTarefa = (id) => {
+    const novoPercorrer = this.state.tarefas.filter(tarefa => {
+      if(id !== tarefa.id) {
+        return tarefa
+      }
+    })
+    this.setState({ tarefas: novoPercorrer})
+  }
+
   onChangeFilter = (event) => {
     this.setState({ filter: event.target.value })
   }
@@ -110,6 +119,7 @@ class App extends React.Component {
               <Tarefa
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
+                onDoubleClick={() => this.apagaTarefa(tarefa.id)}
               >
                 {tarefa.texto}
               </Tarefa>
