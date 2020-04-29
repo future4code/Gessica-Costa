@@ -20,13 +20,20 @@ const CadastroContainer = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   border: 1px solid;
-  padding: 30px;
+  padding: 40px 50px;
 `
-const Label = styled.label`
-  margin-top: 10px;
+const Input = styled.input`
+  width: 100%;
+  margin-bottom: 20px;
 `
 const Botao = styled.button`
-  margin: 10px 0;
+  width: 100%;
+  background-color: rgb(192, 192, 111);
+  color: white;
+	border: none;
+	padding: 5px;
+	height: 30px;
+	cursor: pointer;
 `
 
 class CadastroDeUsuario extends React.Component {
@@ -68,7 +75,7 @@ class CadastroDeUsuario extends React.Component {
         }
       )
       .then(resposta => {
-        alert('Cadastrou', resposta)
+        alert('Usuário cadastrado', resposta)
       })
       .catch(error => {
         alert('ERRO', error.response)
@@ -79,13 +86,13 @@ class CadastroDeUsuario extends React.Component {
       return (
         <Container>
           <Header>
-            <button onClick={this.props.onClick}>Lista de Usuários</button>
+            <Botao onClick={this.props.onClick}>Lista de Usuários</Botao>
           </Header>
           <CadastroContainer>
           <label>Nome:</label>
-          <input onChange={this.onChangeNome} value={this.state.usuarioValue} placeholder='Nome do usuário'></input>
-          <Label>Email:</Label>
-          <input onChange={this.onChangeEmail} value={this.state.emailValue} placeholder='Email do usuário'></input>
+          <Input onChange={this.onChangeNome} value={this.state.usuarioValue} placeholder='Nome do usuário'></Input>
+          <label>Email:</label>
+          <Input onChange={this.onChangeEmail} value={this.state.emailValue} placeholder='Email do usuário'></Input>
           <Botao onClick={this.onCreateUsuario}>Cadastrar</Botao>
         </CadastroContainer>
         </Container>
