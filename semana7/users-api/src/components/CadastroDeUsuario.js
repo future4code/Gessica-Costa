@@ -23,7 +23,7 @@ const CadastroContainer = styled.div`
   padding: 40px 50px;
 `
 const Input = styled.input`
-  width: 100%;
+  width: 98%;
   margin-bottom: 20px;
 `
 const Botao = styled.button`

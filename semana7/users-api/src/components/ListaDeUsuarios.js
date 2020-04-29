@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { tsLiteralType } from '@babel/types'
+import DetalheDoUsuario from './DetalheDoUsuario'
 
 const Container = styled.div`
   display: flex;
@@ -45,16 +45,17 @@ const BotaoApaga = styled.button`
 class ListaDeUsuarios extends React.Component {
 
     state = {
-        listaUsuarios: []
+        listaUsuarios: [],
+        usuario: []
     }
 
     componentDidMount() {
         this.buscaUsuarios()
     }
 
-    buscaUsuarios = () => {
-        axios
-            .get(
+    buscaUsuarios = async () => {
+        try {
+            const response = await axios.get(
                 'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
                 {
                     headers: {
@@ -62,14 +63,12 @@ class ListaDeUsuarios extends React.Component {
                     }
                 }
             )
-            .then(response => {
-                console.log(response.data)
-                this.setState({ listaUsuarios: response.data })
-            })
-            .catch(error => {
-                alert('ERRO')
-                console.log(error.response)
-            })
+            // console.log(response.data)
+            this.setState({ listaUsuarios: response.data })
+        } catch (error) {
+            alert('ERRO')
+            console.log(error.response)
+        }
     }
 
     confirmaApagarUsuario = idUsuario => {
@@ -91,7 +90,7 @@ class ListaDeUsuarios extends React.Component {
             )
             .then(response => {
                 alert('Usuário apagado.')
-                console.log(response)
+                //console.log(response)
                 this.buscaUsuarios()
             })
             .catch(error => {
@@ -100,13 +99,43 @@ class ListaDeUsuarios extends React.Component {
             })
     }
 
+    buscaId = async (id) => {
+        try {
+            const response = await axios.get(
+                'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/' +
+                id,
+                {
+                    headers: {
+                        Authorization: 'gessica-costa-julian'
+                    }
+                }
+            )
+            console.log('buscaid', response.data)
+            this.setState({ usuario: response.data })
+        } catch (error) {
+            alert('ERRO')
+            console.log(error.response)
+        }
+    }
+
     render() {
+        console.log(this.state.listaUsuarios)
+        console.log('usuario', this.state.usuario)
         const lista = this.state.listaUsuarios.map((usuario, index) => {
             return (
-                <Usuario key={index}><label>{usuario.name}</label>
+                <Usuario key={index}>
+                    <a onClick={() => this.buscaId(usuario.id)}>{usuario.name}</a>
                     <BotaoApaga onClick={() => this.confirmaApagarUsuario(usuario.id)}>X</BotaoApaga>
                 </Usuario>)
         })
+        // const dados = this.state.usuario.map((usuario, index) => {
+        //     return (
+        //         <div key={index}>
+        //             <label>{usuario.name}</label>
+        //             <label>{usuario.email}</label>
+        //         </div>)
+        // })
+        // console.log(dados)
         return (
             <Container>
                 <Header>
@@ -116,6 +145,7 @@ class ListaDeUsuarios extends React.Component {
                 <ListaContainer>
                     {lista}
                 </ListaContainer>
+                {/* {dados} */}
             </Container>
         );
     }
