@@ -62,14 +62,20 @@ class ListaDeUsuarios extends React.Component {
                     }
                 }
             )
-            .then(resposta => {
-                console.log(resposta.data)
-                this.setState({ listaUsuarios: resposta.data })
+            .then(response => {
+                console.log(response.data)
+                this.setState({ listaUsuarios: response.data })
             })
             .catch(error => {
                 alert('ERRO')
                 console.log(error.response)
             })
+    }
+
+    confirmaApagarUsuario = idUsuario => {
+        let confirmacao = window.confirm('Tem certeza de que deseja deletar?')
+
+        return confirmacao ? this.apagarUsuario(idUsuario) : console.log('Não apagou')
     }
 
     apagarUsuario = idUsuario => {
@@ -83,9 +89,10 @@ class ListaDeUsuarios extends React.Component {
                     }
                 }
             )
-            .then(resposta => {
+            .then(response => {
                 alert('Usuário apagado.')
-                console.log(resposta)
+                console.log(response)
+                this.buscaUsuarios()
             })
             .catch(error => {
                 alert('ERRO')
@@ -97,7 +104,7 @@ class ListaDeUsuarios extends React.Component {
         const lista = this.state.listaUsuarios.map((usuario, index) => {
             return (
                 <Usuario key={index}><label>{usuario.name}</label>
-                    <BotaoApaga onClick={() => this.apagarUsuario(usuario.id)}>X</BotaoApaga>
+                    <BotaoApaga onClick={() => this.confirmaApagarUsuario(usuario.id)}>X</BotaoApaga>
                 </Usuario>)
         })
         return (

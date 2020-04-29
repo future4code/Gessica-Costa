@@ -74,8 +74,8 @@ class CadastroDeUsuario extends React.Component {
           }
         }
       )
-      .then(resposta => {
-        alert('Usuário cadastrado', resposta)
+      .then(response => {
+        window.alert('Usuário cadastrado', response)
       })
       .catch(error => {
         alert('ERRO', error.response)
