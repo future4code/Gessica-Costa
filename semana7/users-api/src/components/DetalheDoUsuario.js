@@ -2,6 +2,22 @@ import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+`
+const BotaoApaga = styled.button`
+    background-color: white;
+    color: red;
+	border: none;
+	padding: 5px;
+	height: 30px;
+	cursor: pointer;
+`
+
 class DetalheDoUsuario extends React.Component {
     state = {
         usuario: []
@@ -27,14 +43,15 @@ class DetalheDoUsuario extends React.Component {
     }
 
     render() {
-        let lista = this.props.objUsuarios
-        //console.log('lista', lista)
-        const listaUsuarios = lista.map(usuario => {
-            return usuario.name
-        })
-       //console.log(listaUsuarios)
+        const lista = this.props.objUsuarios
+        console.log('lista', this.props.objUsuarios)
+
         return (
-            <div></div>
+            <Container>
+                <label>Nome: {lista.name}</label>
+                <label>Email: {lista.email}</label>
+                <BotaoApaga onClick={this.props.onClickApaga}>Apagar Usuário</BotaoApaga>
+            </Container>
         )
     }
 }

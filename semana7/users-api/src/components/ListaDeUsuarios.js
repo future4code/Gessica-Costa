@@ -24,8 +24,20 @@ const Usuario = styled.div`
     border-bottom: 1px solid;
     align-items: center;
 `
+const DetalheContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+const AUsuario = styled.a`
+    cursor: pointer;
+    :hover {
+        opacity: 0.5;
+    }
+`
 const Botao = styled.button`
-    width: 100%;
+    width: ${props => props.size};
+    margin: ${props => props.margin};
     background-color: rgb(192, 192, 111);
     color: white;
 	border: none;
@@ -46,7 +58,8 @@ class ListaDeUsuarios extends React.Component {
 
     state = {
         listaUsuarios: [],
-        usuario: []
+        usuario: [],
+        detalhe: true
     }
 
     componentDidMount() {
@@ -110,44 +123,51 @@ class ListaDeUsuarios extends React.Component {
                     }
                 }
             )
-            console.log('buscaid', response.data)
+            // console.log('buscaid', response.data)
             this.setState({ usuario: response.data })
+            let muda = !this.state.detalhe
+            this.setState({ detalhe: muda })
         } catch (error) {
             alert('ERRO')
             console.log(error.response)
         }
     }
+    voltaListaUsuarios = () => {
+        this.setState({ detalhe: true })
+    }
 
     render() {
-        console.log(this.state.listaUsuarios)
-        console.log('usuario', this.state.usuario)
         const lista = this.state.listaUsuarios.map((usuario, index) => {
             return (
                 <Usuario key={index}>
-                    <a onClick={() => this.buscaId(usuario.id)}>{usuario.name}</a>
+                    <AUsuario onClick={() => this.buscaId(usuario.id)}>{usuario.name}</AUsuario>
                     <BotaoApaga onClick={() => this.confirmaApagarUsuario(usuario.id)}>X</BotaoApaga>
                 </Usuario>)
         })
-        // const dados = this.state.usuario.map((usuario, index) => {
-        //     return (
-        //         <div key={index}>
-        //             <label>{usuario.name}</label>
-        //             <label>{usuario.email}</label>
-        //         </div>)
-        // })
-        // console.log(dados)
-        return (
-            <Container>
-                <Header>
-                    <Botao onClick={this.props.onClick}>Cadastro de Usuários</Botao>
-                </Header>
-                <h4>Usuários cadastrados</h4>
-                <ListaContainer>
-                    {lista}
-                </ListaContainer>
-                {/* {dados} */}
-            </Container>
-        );
+
+        if (this.state.detalhe) {
+            return (
+                <Container>
+                    <Header>
+                        <Botao size={'100%'} onClick={this.props.onClick}>Cadastro de Usuários</Botao>
+                    </Header>
+                    <h4>Usuários cadastrados</h4>
+                    <ListaContainer>
+                        {lista}
+                    </ListaContainer>
+                </Container>
+            );
+        } else {
+            return (
+                <DetalheContainer>
+                    <Botao size={'auto'} margin={'10px'} onClick={this.voltaListaUsuarios}>Lista de Usuários</Botao>
+                    < DetalheDoUsuario
+                        objUsuarios={this.state.usuario}
+                        onClickApaga={() => this.confirmaApagarUsuario(this.state.usuario.id)}
+                    />
+                </DetalheContainer>
+            )
+        }
     }
 }
 
