@@ -36,6 +36,18 @@ const Image = Styled.img`
 `
 
 export function TelaMatches(props) {
+    const [list, setList] = useState({})
+
+    useEffect(() => {
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${gessica-costa-julian}/matches')
+            .then(res => {
+                console.log('Get Matches:', res.data.matches)
+               // setList(res.data.profile)
+            })
+            .catch(err => {
+                console.log('Erro no Get Matches:', err)
+            })
+    }, [])
 
     return (
         <ContainerMatches>

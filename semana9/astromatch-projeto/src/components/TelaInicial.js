@@ -42,39 +42,31 @@ export function TelaInicial(props) {
     const [list, setList] = useState({})
 
     useEffect(() => {
-        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${gessica-costa-julian}/person',
-        {
-            aluno: 'gessica-costa-julian'
-        })
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${gessica-costa-julian}/person')
             .then(res => {
-                console.log(res.data.profile)
+                console.log('Get Profile: ', res.data.profile)
                 setList(res.data.profile)
             })
             .catch(err => {
-                console.log('Erro no get profile', err)
+                console.log('Erro no Get Profile: ', err)
             })
     }, [])
 
     const deuMatch = id => {
-        console.log('id', id)
-        console.log('clicou')
         const body = {
             "id": id,
             "choice": true
         }
 
-        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/choose-person",
+        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${gessica-costa-julian}/choose-person",
             body,
             {
                 headers: {'Content-Type': "application/json"}
-            },
-            {
-                aluno: 'gessica-costa-julian'
             })
             .then(res => {
-                console.log(res)
+                console.log('Choose Person: ', res)
             }).catch(err => {
-                console.log('Erro no choose person', err)
+                console.log('Erro no Choose Person: ', err)
             })
     }
 
