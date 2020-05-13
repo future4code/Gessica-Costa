@@ -17,7 +17,7 @@ const Container = Styled.div`
 `
 
 function App() {
-  const [telaInicial, setTelaInicial] = useState(true)
+  const [telaInicial, setTelaInicial] = useState(false)
 
   const onClickTelaInicial = () => {
     setTelaInicial(false)

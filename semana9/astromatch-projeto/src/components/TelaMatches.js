@@ -24,6 +24,8 @@ const Label = Styled.label`
 `
 const ContainerBody = Styled.div`
     padding: 20px;
+    overflow: auto;
+    height: 510px;
 `
 const Card = Styled.div`
     display: flex;
@@ -47,7 +49,7 @@ export function TelaMatches(props) {
     const [list, setList] = useState([])
 
     useEffect(() => {
-        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${gessica-costa-julian}/matches')
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/matches')
             .then(res => {
                 console.log('Get Matches:', res.data.matches)
                 setList(res.data.matches)

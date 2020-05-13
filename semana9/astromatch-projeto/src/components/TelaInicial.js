@@ -42,7 +42,11 @@ export function TelaInicial(props) {
     const [list, setList] = useState({})
 
     useEffect(() => {
-        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${gessica-costa-julian}/person')
+        newProfile()
+    }, [])
+
+    const newProfile = () => {
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/person')
             .then(res => {
                 console.log('Get Profile: ', res.data.profile)
                 setList(res.data.profile)
@@ -50,7 +54,7 @@ export function TelaInicial(props) {
             .catch(err => {
                 console.log('Erro no Get Profile: ', err)
             })
-    }, [])
+    }
 
     const deuMatch = id => {
         const body = {
@@ -58,16 +62,18 @@ export function TelaInicial(props) {
             "choice": true
         }
 
-        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${gessica-costa-julian}/choose-person",
+        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/choose-person",
             body,
             {
-                headers: {'Content-Type': "application/json"}
+                headers: { 'Content-Type': "application/json" }
             })
             .then(res => {
                 console.log('Choose Person: ', res)
             }).catch(err => {
                 console.log('Erro no Choose Person: ', err)
             })
+
+        newProfile()
     }
 
     return (
@@ -86,7 +92,7 @@ export function TelaInicial(props) {
                     <p>{list.bio}</p>
                 </Information>
                 <Choice>
-                    <ButtonNegative>X</ButtonNegative>
+                    <ButtonNegative onClick={newProfile}>X</ButtonNegative>
                     <ButtonPositive onClick={() => deuMatch(list.id)}>S2</ButtonPositive>
                 </Choice>
             </ContainerBody>
