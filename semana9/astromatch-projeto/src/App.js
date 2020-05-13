@@ -21,7 +21,6 @@ function App() {
 
   const onClickTelaInicial = () => {
     setTelaInicial(false)
-    console.log('clicou')
   }
 
   const onClickTelaMatches = () => {

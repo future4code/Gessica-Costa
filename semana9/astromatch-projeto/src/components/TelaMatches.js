@@ -31,23 +31,45 @@ const Card = Styled.div`
     align-items: center;
 `
 const Image = Styled.img`
-    border-radius: 20%;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50%;
+`
+const ContainerImage = Styled.div`
+    width: 50px;
+    height: 100%;
+    border: 1px solid;
+    border-radius: 50%;
     margin-right: 10px;
 `
 
 export function TelaMatches(props) {
-    const [list, setList] = useState({})
+    const [list, setList] = useState([])
 
     useEffect(() => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${gessica-costa-julian}/matches')
             .then(res => {
                 console.log('Get Matches:', res.data.matches)
-               // setList(res.data.profile)
+                setList(res.data.matches)
             })
             .catch(err => {
                 console.log('Erro no Get Matches:', err)
             })
-    }, [])
+    }, [setList])
+    console.log('list', list)
+
+    const lista = list.map(match => {
+        return (
+            <Card>
+                <ContainerImage>
+                    <Image src={match.photo} />
+                </ContainerImage>
+                <label>{match.name}</label>
+            </Card>
+        );
+    });
+
+    console.log('lista', lista)
 
     return (
         <ContainerMatches>
@@ -58,10 +80,7 @@ export function TelaMatches(props) {
                 </Header>
             </ContainerHeader>
             <ContainerBody>
-                <Card>
-                    <Image src={"https://picsum.photos/60/40"} />
-                    <label>Nome</label>
-                </Card>
+                {lista}
             </ContainerBody>
         </ContainerMatches>
     )
