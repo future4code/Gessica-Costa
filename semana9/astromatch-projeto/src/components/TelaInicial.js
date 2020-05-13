@@ -1,29 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Styled from 'styled-components'
 import axios from 'axios'
+import {UrlAstromatch} from './UrlAstromatch'
+import {Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
 
-const ContainerInicial = Styled.div`
-`
-const ContainerHeader = Styled.div`
-    display: flex;
-    justify-content: flex-end;
-    border-bottom: 1px solid rgb(200, 200, 200);
-`
-const Header = Styled.div`
-    width: 57.7%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-`
-const Button = Styled.button`
-    cursor: pointer;
-`
-const Label = Styled.label`
-    display: flex;
-    justify-self: center;
-    align-self: center;
-`
 const Image = Styled.img`
     max-width: 360px;
     max-height: 300px;
@@ -77,10 +57,13 @@ export function TelaInicial(props) {
     }
 
     return (
-        <ContainerInicial>
+        <Container>
             <ContainerHeader>
                 <Header>
-                    <Label>astro<b>match</b></Label>
+                    <ImageAstromatch
+                        src={UrlAstromatch}
+                        alt={'astromatch'}
+                    />
                     <Button onClick={props.onClick}>Matches</Button>
                 </Header>
             </ContainerHeader>
@@ -96,6 +79,6 @@ export function TelaInicial(props) {
                     <ButtonPositive onClick={() => deuMatch(list.id)}>S2</ButtonPositive>
                 </Choice>
             </ContainerBody>
-        </ContainerInicial>
+        </Container>
     )
 }

@@ -1,49 +1,47 @@
 import React, { useState, useEffect } from 'react'
 import Styled from 'styled-components'
 import axios from 'axios'
+import { UrlAstromatch } from './UrlAstromatch'
+import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
 
-const ContainerMatches = Styled.div`
-`
-const ContainerHeader = Styled.div`
-    border-bottom: 1px solid rgb(200, 200, 200);
-`
-const Header = Styled.div`
-    width: 57.8%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-`
-const Button = Styled.button`
-    cursor: pointer;
-`
-const Label = Styled.label`
-    display: flex;
-    justify-self: center;
-    align-self: center;
-`
 const ContainerBody = Styled.div`
     padding: 20px;
     overflow: auto;
-    height: 510px;
+    height: 100%;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #b3b3b3; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #8c8c8c; 
+    }
 `
 const Card = Styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-`
-const Image = Styled.img`
-    max-width: 60px;
-    max-height: 60px;
-    border-radius: 50%;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(200, 200, 200);
 `
 const ContainerImage = Styled.div`
     width: 50px;
-    height: 100%;
-    border: 1px solid;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     margin-right: 10px;
+    overflow: hidden;
+    background-size: cover;
 `
+const divStyle = (src) => ({
+    backgroundImage: 'url(' + src + ')'
+})
 
 export function TelaMatches(props) {
     const [list, setList] = useState([])
@@ -63,9 +61,7 @@ export function TelaMatches(props) {
     const lista = list.map(match => {
         return (
             <Card>
-                <ContainerImage>
-                    <Image src={match.photo} />
-                </ContainerImage>
+                <ContainerImage style={divStyle(match.photo)} />
                 <label>{match.name}</label>
             </Card>
         );
@@ -74,16 +70,19 @@ export function TelaMatches(props) {
     console.log('lista', lista)
 
     return (
-        <ContainerMatches>
+        <Container>
             <ContainerHeader>
                 <Header>
                     <Button onClick={props.onClick}>Início</Button>
-                    <Label>astro<b>match</b></Label>
+                    <ImageAstromatch
+                        src={UrlAstromatch}
+                        alt={'astromatch'}
+                    />
                 </Header>
             </ContainerHeader>
             <ContainerBody>
                 {lista}
             </ContainerBody>
-        </ContainerMatches>
+        </Container>
     )
 }
