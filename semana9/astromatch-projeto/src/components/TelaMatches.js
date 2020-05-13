@@ -40,7 +40,7 @@ const ContainerImage = Styled.div`
     background-size: cover;
 `
 const divStyle = (src) => ({
-    backgroundImage: 'url(' + src + ')'
+    backgroundImage: `url(${src})`
 })
 
 export function TelaMatches(props) {
@@ -56,7 +56,6 @@ export function TelaMatches(props) {
                 console.log('Erro no Get Matches:', err)
             })
     }, [setList])
-    console.log('list', list)
 
     const lista = list.map(match => {
         return (

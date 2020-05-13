@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Styled from 'styled-components'
 import axios from 'axios'
-import {UrlAstromatch} from './UrlAstromatch'
-import {Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
+import { UrlAstromatch } from './UrlAstromatch'
+import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
 
 const Image = Styled.img`
     max-width: 360px;
@@ -12,10 +12,52 @@ const Image = Styled.img`
 const ContainerBody = Styled.div`
     padding: 20px;
 `
-const Information = Styled.div``
+const Information = Styled.div`
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 360px;
+    height: 350px;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    filter: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    transform: translate(0, -100%);
+`
+const Background = Styled.div`
+    background-position: center;
+    background-repeat: repeat;
+    width: 360px;
+    height: 350px;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    filter: blur(5px);
+    opacity: 0.8;
+`
+const Text = Styled.div`
+    color: white;
+    height: 30%;
+    text-shadow: 2px 2px 4px #000000;
+    text-align: left;
+    font-size: 20px;
+    padding: 20px;
+`
+const LabelName = Styled.label`
+    font-size: 30px;
+`
 const Choice = Styled.div``
 const ButtonNegative = Styled.button``
 const ButtonPositive = Styled.button``
+const divStyle = (src) => ({
+    backgroundImage: `url(${src})`
+})
 
 export function TelaInicial(props) {
 
@@ -68,12 +110,14 @@ export function TelaInicial(props) {
                 </Header>
             </ContainerHeader>
             <ContainerBody>
-                <Information>
-                    <Image src={list.photo} alt="Foto" />
-                    <h5>{list.name}</h5>
-                    <label>{list.age}</label>
-                    <p>{list.bio}</p>
-                </Information>
+                <Background style={divStyle(list.photo)}></Background>
+                    <Information style={divStyle(list.photo)}>
+                        <Text>
+                            <LabelName>{list.name}, </LabelName>
+                            <label>{list.age}</label>
+                            <p>{list.bio}</p>
+                        </Text>
+                    </Information>
                 <Choice>
                     <ButtonNegative onClick={newProfile}>X</ButtonNegative>
                     <ButtonPositive onClick={() => deuMatch(list.id)}>S2</ButtonPositive>
