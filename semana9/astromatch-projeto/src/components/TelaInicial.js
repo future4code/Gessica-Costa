@@ -3,6 +3,8 @@ import Styled from 'styled-components'
 import axios from 'axios'
 import { UrlAstromatch } from './UrlAstromatch'
 import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
+import Favorite from '@material-ui/icons/Favorite'
+import HighlightOff from '@material-ui/icons/CancelOutlined'
 
 const Image = Styled.img`
     max-width: 360px;
@@ -17,7 +19,7 @@ const Information = Styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     width: 360px;
-    height: 350px;
+    height: 400px;
     border-radius: 1%;
     display: flex;
     flex-direction: column;
@@ -32,7 +34,7 @@ const Background = Styled.div`
     background-position: center;
     background-repeat: repeat;
     width: 360px;
-    height: 350px;
+    height: 400px;
     border-radius: 1%;
     display: flex;
     flex-direction: column;
@@ -43,7 +45,7 @@ const Background = Styled.div`
 `
 const Text = Styled.div`
     color: white;
-    height: 30%;
+    height: 40%;
     text-shadow: 2px 2px 4px #000000;
     text-align: left;
     font-size: 20px;
@@ -52,9 +54,22 @@ const Text = Styled.div`
 const LabelName = Styled.label`
     font-size: 30px;
 `
-const Choice = Styled.div``
-const ButtonNegative = Styled.button``
-const ButtonPositive = Styled.button``
+const Choice = Styled.div`
+    margin-top: 20px;
+`
+const ButtonNegative = Styled.button`
+    background-color: transparent;
+    border: none;
+`
+const ButtonChoice = Styled.button`
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    :hover {
+        opacity: 0.5;
+    }
+`
 const divStyle = (src) => ({
     backgroundImage: `url(${src})`
 })
@@ -95,7 +110,7 @@ export function TelaInicial(props) {
                 console.log('Erro no Choose Person: ', err)
             })
 
-        newProfile()
+        newProfile() 
     }
 
     return (
@@ -110,17 +125,17 @@ export function TelaInicial(props) {
                 </Header>
             </ContainerHeader>
             <ContainerBody>
-                <Background style={divStyle(list.photo)}></Background>
-                    <Information style={divStyle(list.photo)}>
-                        <Text>
-                            <LabelName>{list.name}, </LabelName>
-                            <label>{list.age}</label>
-                            <p>{list.bio}</p>
-                        </Text>
-                    </Information>
+                <Background style={divStyle(list.photo)} />
+                <Information style={divStyle(list.photo)}>
+                    <Text>
+                        <LabelName>{list.name}, </LabelName>
+                        <label>{list.age}</label>
+                        <p>{list.bio}</p>
+                    </Text>
+                </Information>
                 <Choice>
-                    <ButtonNegative onClick={newProfile}>X</ButtonNegative>
-                    <ButtonPositive onClick={() => deuMatch(list.id)}>S2</ButtonPositive>
+                    <ButtonChoice onClick={newProfile}><HighlightOff /></ButtonChoice>
+                    <ButtonChoice onClick={() => deuMatch(list.id)}><Favorite /></ButtonChoice>
                 </Choice>
             </ContainerBody>
         </Container>
