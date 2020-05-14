@@ -19,6 +19,12 @@ export const Header = Styled.div`
 `
 export const Button = Styled.button`
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    :hover {
+        opacity: 0.5;
+    }
 `
 export const ImageAstromatch = Styled.img`
     height: 100%;

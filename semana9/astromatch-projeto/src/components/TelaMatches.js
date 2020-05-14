@@ -3,6 +3,7 @@ import Styled from 'styled-components'
 import axios from 'axios'
 import { UrlAstromatch } from './UrlAstromatch'
 import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
+import Search from '@material-ui/icons/Search'
 
 const ContainerBody = Styled.div`
     padding: 20px;
@@ -39,6 +40,9 @@ const ContainerImage = Styled.div`
     overflow: hidden;
     background-size: cover;
 `
+const SearchStyled = Styled(Search)`
+    color: #762d93;
+`
 const divStyle = (src) => ({
     backgroundImage: `url(${src})`
 })
@@ -72,7 +76,7 @@ export function TelaMatches(props) {
         <Container>
             <ContainerHeader>
                 <Header>
-                    <Button onClick={props.onClick}>Início</Button>
+                    <Button onClick={props.onClick}><SearchStyled /></Button>
                     <ImageAstromatch
                         src={UrlAstromatch}
                         alt={'astromatch'}

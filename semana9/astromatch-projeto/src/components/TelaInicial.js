@@ -5,6 +5,7 @@ import { UrlAstromatch } from './UrlAstromatch'
 import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
 import Favorite from '@material-ui/icons/Favorite'
 import HighlightOff from '@material-ui/icons/CancelOutlined'
+import HowToReg from '@material-ui/icons/HowToReg'
 
 const Image = Styled.img`
     max-width: 360px;
@@ -70,6 +71,9 @@ const ButtonChoice = Styled.button`
         opacity: 0.5;
     }
 `
+const HowToRegStyle = Styled(HowToReg)`
+    color: #762d93;
+`
 const divStyle = (src) => ({
     backgroundImage: `url(${src})`
 })
@@ -121,7 +125,7 @@ export function TelaInicial(props) {
                         src={UrlAstromatch}
                         alt={'astromatch'}
                     />
-                    <Button onClick={props.onClick}>Matches</Button>
+                    <Button onClick={props.onClick}><HowToRegStyle /></Button>
                 </Header>
             </ContainerHeader>
             <ContainerBody>
