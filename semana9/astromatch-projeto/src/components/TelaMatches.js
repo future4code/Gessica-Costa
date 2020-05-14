@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import Styled from 'styled-components'
-import axios from 'axios'
+import { DeleteMatches } from './DeleteMatches'
 import { UrlAstromatch } from './UrlAstromatch'
-import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
+import axios from 'axios'
+import Styled from 'styled-components'
+import { Container, ContainerHeader, Header, Button, ImageAstromatch, FabStyled } from './Style'
 import Search from '@material-ui/icons/Search'
 
 const ContainerBody = Styled.div`
     padding: 20px;
     overflow: auto;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+
     ::-webkit-scrollbar {
         width: 5px;
     }
@@ -42,6 +46,9 @@ const ContainerImage = Styled.div`
 `
 const SearchStyled = Styled(Search)`
     color: #762d93;
+    :hover {
+        color: #501866;
+    }
 `
 const divStyle = (src) => ({
     backgroundImage: `url(${src})`
@@ -49,28 +56,30 @@ const divStyle = (src) => ({
 
 export function TelaMatches(props) {
     const [list, setList] = useState([])
+    const i = 0
 
-    useEffect(() => {
+    const matches = () => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/matches')
             .then(res => {
-                console.log('Get Matches:', res.data.matches)
                 setList(res.data.matches)
             })
             .catch(err => {
                 console.log('Erro no Get Matches:', err)
             })
+    }
+
+    useEffect(() => {
+        matches()
     }, [setList])
 
-    const lista = list.map(match => {
+    const lista = list.map((match, i) => {
         return (
-            <Card>
+            <Card key={i}>
                 <ContainerImage style={divStyle(match.photo)} />
                 <label>{match.name}</label>
             </Card>
         );
     });
-
-    console.log('lista', lista)
 
     return (
         <Container>
@@ -85,6 +94,7 @@ export function TelaMatches(props) {
             </ContainerHeader>
             <ContainerBody>
                 {lista}
+                <DeleteMatches matchCall={matches} />
             </ContainerBody>
         </Container>
     )

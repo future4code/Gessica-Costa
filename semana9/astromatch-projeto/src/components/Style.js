@@ -1,4 +1,5 @@
 import Styled from 'styled-components'
+import Fab from '@material-ui/core/Fab'
 
 export const Container = Styled.div`
     height: 480px;
@@ -21,12 +22,12 @@ export const Button = Styled.button`
     cursor: pointer;
     background-color: transparent;
     border: none;
-
-    :hover {
-        opacity: 0.5;
-    }
 `
 export const ImageAstromatch = Styled.img`
     height: 100%;
     position: relative;
+`
+export const FabStyled = Styled(Fab)`
+    align-self: flex-end;
+    position: fixed;
 `

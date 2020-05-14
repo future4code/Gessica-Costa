@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { DeleteMatches } from './DeleteMatches'
 import Styled from 'styled-components'
 import axios from 'axios'
 import { UrlAstromatch } from './UrlAstromatch'
 import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './Style'
+
 import Favorite from '@material-ui/icons/Favorite'
 import HighlightOff from '@material-ui/icons/CancelOutlined'
 import HowToReg from '@material-ui/icons/HowToReg'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 
 const Image = Styled.img`
     max-width: 360px;
@@ -14,6 +17,8 @@ const Image = Styled.img`
 `
 const ContainerBody = Styled.div`
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 `
 const Information = Styled.div`
     background-position: center;
@@ -73,7 +78,22 @@ const ButtonChoice = Styled.button`
 `
 const HowToRegStyle = Styled(HowToReg)`
     color: #762d93;
+    :hover {
+        color: #501866;
+    }
 `
+
+// const myTheme = createMuiTheme({
+//     palette: {
+//         primary: {
+//             main: '#501866'
+//         },
+//         secondary: {
+//             main: '#FF0000'
+//         }
+//     }
+// })
+
 const divStyle = (src) => ({
     backgroundImage: `url(${src})`
 })
@@ -89,7 +109,6 @@ export function TelaInicial(props) {
     const newProfile = () => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/person')
             .then(res => {
-                console.log('Get Profile: ', res.data.profile)
                 setList(res.data.profile)
             })
             .catch(err => {
@@ -109,12 +128,12 @@ export function TelaInicial(props) {
                 headers: { 'Content-Type': "application/json" }
             })
             .then(res => {
-                console.log('Choose Person: ', res)
+                console.log('Choose Person: ', res.data)
             }).catch(err => {
                 console.log('Erro no Choose Person: ', err)
             })
 
-        newProfile() 
+        newProfile()
     }
 
     return (
@@ -129,18 +148,21 @@ export function TelaInicial(props) {
                 </Header>
             </ContainerHeader>
             <ContainerBody>
-                <Background style={divStyle(list.photo)} />
-                <Information style={divStyle(list.photo)}>
-                    <Text>
-                        <LabelName>{list.name}, </LabelName>
-                        <label>{list.age}</label>
-                        <p>{list.bio}</p>
-                    </Text>
-                </Information>
+                <div>
+                    <Background style={divStyle(list.photo)} />
+                    <Information style={divStyle(list.photo)}>
+                        <Text>
+                            <LabelName>{list.name}, </LabelName>
+                            <label>{list.age}</label>
+                            <p>{list.bio}</p>
+                        </Text>
+                    </Information>
+                </div>
                 <Choice>
                     <ButtonChoice onClick={newProfile}><HighlightOff /></ButtonChoice>
                     <ButtonChoice onClick={() => deuMatch(list.id)}><Favorite /></ButtonChoice>
                 </Choice>
+                <DeleteMatches />
             </ContainerBody>
         </Container>
     )
