@@ -1,19 +1,19 @@
 import Styled from 'styled-components'
-import Fab from '@material-ui/core/Fab'
 
 export const Container = Styled.div`
     height: 480px;
+    width: 100%;
 `
 export const ContainerHeader = Styled.div`
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
     border-bottom: 1px solid rgb(200, 200, 200);
 `
 export const Header = Styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 10px;
     height: 50px;
@@ -22,12 +22,11 @@ export const Button = Styled.button`
     cursor: pointer;
     background-color: transparent;
     border: none;
+    outline: none;
 `
 export const ImageAstromatch = Styled.img`
-    height: 100%;
-    position: relative;
-`
-export const FabStyled = Styled(Fab)`
-    align-self: flex-end;
+    height: 50px;
     position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
 `

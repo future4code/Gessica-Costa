@@ -1,7 +1,14 @@
 import React from 'react'
-import { Container, FabStyled } from './Style'
+import Fab from '@material-ui/core/Fab'
 import Clear from '@material-ui/icons/Clear'
 import axios from 'axios'
+import Styled from 'styled-components'
+
+const Container = Styled.div`
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+`
 
 export function DeleteMatches(props) {
 
@@ -22,7 +29,7 @@ export function DeleteMatches(props) {
 
     return (
         <Container>
-            <FabStyled onClick={confirmDelete} size='medium' color='secondary'><Clear /></FabStyled>
+            <Fab onClick={confirmDelete} size='medium' color='secondary'><Clear /></Fab>
         </Container>
     )
 }

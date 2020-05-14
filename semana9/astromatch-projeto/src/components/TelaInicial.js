@@ -8,7 +8,6 @@ import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './S
 import Favorite from '@material-ui/icons/Favorite'
 import HighlightOff from '@material-ui/icons/CancelOutlined'
 import HowToReg from '@material-ui/icons/HowToReg'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 
 const Image = Styled.img`
     max-width: 360px;
@@ -63,18 +62,21 @@ const LabelName = Styled.label`
 const Choice = Styled.div`
     margin-top: 20px;
 `
-const ButtonNegative = Styled.button`
-    background-color: transparent;
-    border: none;
-`
 const ButtonChoice = Styled.button`
     cursor: pointer;
     background-color: transparent;
     border: none;
+    outline: none;
 
     :hover {
         opacity: 0.5;
     }
+`
+const FavoriteStyled = Styled(Favorite)`
+    color: green;
+`
+const HighlightOffStyled = Styled(HighlightOff)`
+    color: red;
 `
 const HowToRegStyle = Styled(HowToReg)`
     color: #762d93;
@@ -82,17 +84,6 @@ const HowToRegStyle = Styled(HowToReg)`
         color: #501866;
     }
 `
-
-// const myTheme = createMuiTheme({
-//     palette: {
-//         primary: {
-//             main: '#501866'
-//         },
-//         secondary: {
-//             main: '#FF0000'
-//         }
-//     }
-// })
 
 const divStyle = (src) => ({
     backgroundImage: `url(${src})`
@@ -109,11 +100,16 @@ export function TelaInicial(props) {
     const newProfile = () => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/person')
             .then(res => {
-                setList(res.data.profile)
+                if(res.data.profile === null){
+                    setList({})
+                } else {
+                    setList(res.data.profile)
+                }
             })
             .catch(err => {
                 console.log('Erro no Get Profile: ', err)
             })
+            divStyle('https://cdn.dribbble.com/users/284492/screenshots/3560884/heart-animation_repost.gif')
     }
 
     const deuMatch = id => {
@@ -159,8 +155,8 @@ export function TelaInicial(props) {
                     </Information>
                 </div>
                 <Choice>
-                    <ButtonChoice onClick={newProfile}><HighlightOff /></ButtonChoice>
-                    <ButtonChoice onClick={() => deuMatch(list.id)}><Favorite /></ButtonChoice>
+                    <ButtonChoice onClick={newProfile}><HighlightOffStyled /></ButtonChoice>
+                    <ButtonChoice onClick={() => deuMatch(list.id)}><FavoriteStyled /></ButtonChoice>
                 </Choice>
                 <DeleteMatches />
             </ContainerBody>
