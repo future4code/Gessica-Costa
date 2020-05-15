@@ -8,6 +8,7 @@ import { Container, ContainerHeader, Header, Button, ImageAstromatch } from './S
 import Favorite from '@material-ui/icons/Favorite'
 import HighlightOff from '@material-ui/icons/CancelOutlined'
 import HowToReg from '@material-ui/icons/HowToReg'
+import Badge from '@material-ui/core/Badge';
 
 const Image = Styled.img`
     max-width: 360px;
@@ -100,16 +101,17 @@ export function TelaInicial(props) {
     const newProfile = () => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/person')
             .then(res => {
-                if(res.data.profile === null){
+                props.matchCall()
+
+                res.data.profile === null ? (
                     setList({})
-                } else {
-                    setList(res.data.profile)
-                }
+                ) : (
+                        setList(res.data.profile)
+                    )
             })
             .catch(err => {
                 console.log('Erro no Get Profile: ', err)
             })
-            divStyle('https://cdn.dribbble.com/users/284492/screenshots/3560884/heart-animation_repost.gif')
     }
 
     const deuMatch = id => {
@@ -140,7 +142,11 @@ export function TelaInicial(props) {
                         src={UrlAstromatch}
                         alt={'astromatch'}
                     />
-                    <Button onClick={props.onClick}><HowToRegStyle /></Button>
+                    <Button onClick={props.onClick}>
+                        <Badge color={'secondary'} badgeContent={props.content} showZero>
+                            <HowToRegStyle />
+                        </Badge>
+                    </Button>
                 </Header>
             </ContainerHeader>
             <ContainerBody>
@@ -158,7 +164,7 @@ export function TelaInicial(props) {
                     <ButtonChoice onClick={newProfile}><HighlightOffStyled /></ButtonChoice>
                     <ButtonChoice onClick={() => deuMatch(list.id)}><FavoriteStyled /></ButtonChoice>
                 </Choice>
-                <DeleteMatches />
+                <DeleteMatches matchCall={props.matchCall} profile={newProfile} />
             </ContainerBody>
         </Container>
     )

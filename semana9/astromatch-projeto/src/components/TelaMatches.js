@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { DeleteMatches } from './DeleteMatches'
 import { UrlAstromatch } from './UrlAstromatch'
-import axios from 'axios'
 import Styled from 'styled-components'
 import { Container, ContainerHeader, Header, Button, ImageAstromatch, FabStyled } from './Style'
 import Search from '@material-ui/icons/Search'
@@ -32,6 +31,11 @@ const Card = Styled.div`
     align-items: center;
     padding: 5px 0;
     border-bottom: 1px solid rgb(200, 200, 200);
+    cursor: pointer;
+
+    :hover {
+        background-color: #f1f1f1;
+    }
 `
 const ContainerImage = Styled.div`
     width: 50px;
@@ -55,24 +59,12 @@ const divStyle = (src) => ({
 })
 
 export function TelaMatches(props) {
-    const [list, setList] = useState([])
-    const i = 0
-
-    const matches = () => {
-        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/matches')
-            .then(res => {
-                setList(res.data.matches)
-            })
-            .catch(err => {
-                console.log('Erro no Get Matches:', err)
-            })
-    }
 
     useEffect(() => {
-        matches()
-    }, [setList])
+        props.matchCall()
+    }, [])
 
-    const lista = list.map((match, i) => {
+    const lista = props.list.map((match, i) => {
         return (
             <Card key={i}>
                 <ContainerImage style={divStyle(match.photo)} />
@@ -94,7 +86,7 @@ export function TelaMatches(props) {
             </ContainerHeader>
             <ContainerBody>
                 {lista}
-                <DeleteMatches matchCall={matches} />
+                <DeleteMatches matchCall={props.matchCall} />
             </ContainerBody>
         </Container>
     )

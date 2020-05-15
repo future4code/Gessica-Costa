@@ -17,6 +17,7 @@ export function DeleteMatches(props) {
         axios.put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/clear")
             .then(res => {
                 props.matchCall()
+                props.profile()
             }).catch(err => {
                 console.log('Erro no Clear: ', err)
             })

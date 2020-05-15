@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import './App.css';
+import React, { useState, useEffect } from 'react'
 import { TelaInicial } from './components/TelaInicial'
 import { TelaMatches } from './components/TelaMatches';
+import axios from 'axios'
 import Styled from 'styled-components'
 
 const Container = Styled.div`
+    text-align: center;
     width: 400px;
     height: 600px;
     border: 1px solid;
@@ -18,6 +19,21 @@ const Container = Styled.div`
 
 function App() {
   const [telaInicial, setTelaInicial] = useState(true)
+  const [list, setList] = useState([])
+
+  const matches = () => {
+    axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gessica-costa-julian/matches')
+      .then(res => {
+        setList(res.data.matches)
+      })
+      .catch(err => {
+        console.log('Erro no Get Matches:', err)
+      })
+  }
+
+  useEffect(() => {
+    matches()
+  }, [setList])
 
   const onClickTelaInicial = () => {
     setTelaInicial(false)
@@ -28,9 +44,17 @@ function App() {
   }
 
   const telas = telaInicial ? (
-    <TelaInicial onClick={onClickTelaInicial} />
+    <TelaInicial
+      onClick={onClickTelaInicial}
+      matchCall={matches}
+      content={list.length}
+    />
   ) : (
-      <TelaMatches onClick={onClickTelaMatches} />
+      <TelaMatches
+        onClick={onClickTelaMatches}
+        list={list}
+        matchCall={matches}
+      />
     )
 
   return (
