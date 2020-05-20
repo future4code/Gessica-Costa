@@ -5,15 +5,19 @@ display: flex;
 flex-direction: column;
 min-height: 100vh;
 width: 100vw;
+background-color: #293241;
+`
+export const GridViagens = Styled.div`
+width: 100%;
+flex-grow: 1;
+`
+export const SideBar = Styled.div`
+background-color: #3D5A80;
+color: white;
 `
 export const Conteudo = Styled.div`
 display: flex;
-border: 1px solid;
 flex-grow: 1;
-`
-export const GridViagens = Styled.div`
-flex-grow: 1;
-border: 1px solid;
 `
 export const Header = Styled.div`
 position: relative; 
@@ -21,7 +25,8 @@ top: 0;
 border: 1px solid;
 `
 export const Footer = Styled.div`
+height: 6vh;
 position: relative; 
 bottom: 0;
-border: 1px solid;
+background-color: #334661;
 `
