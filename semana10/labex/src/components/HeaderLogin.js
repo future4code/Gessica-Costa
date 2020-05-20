@@ -39,7 +39,7 @@ function HeaderLogin(props) {
     history.push('/')
   }
   const goToLogin = () => {
-    history.push('/Login')
+    history.push('/login')
   }
 
   return (

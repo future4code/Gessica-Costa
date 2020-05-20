@@ -9,11 +9,11 @@ function TripDetailsPage() {
   const history = useHistory()
 
   const goToListTrips = () => {
-    history.push('/ListaViagens')
+    history.push('/lista-viagens')
   }
 
   const goToCreateTrip = () => {
-    history.push('/CriarViagem')
+    history.push('/criar-viagem')
   }
 
   return (

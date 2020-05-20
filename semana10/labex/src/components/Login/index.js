@@ -13,7 +13,7 @@ function Login() {
   const [password, setPassword, onChangePassword] = useInputValue()
 
   const goToListTripsPage = () => {
-    history.push('/ListaViagens')
+    history.push('/lista-viagens')
   }
 
   return (

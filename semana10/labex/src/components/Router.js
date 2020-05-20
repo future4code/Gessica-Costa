@@ -13,19 +13,19 @@ function Router() {
   return (
     <BrowserRouter>
         <Switch>
-            <Route exact path='/DetalhesViagem'>
+            <Route exact path='/detalhes-viagem'>
                 <TripDetailsPage />
             </Route>
-            <Route exact path='/CriarViagem'>
+            <Route exact path='/criar-viagem'>
                 <CreateTripPage />
             </Route>
-            <Route exact path='/ListaViagens'>
+            <Route exact path='/lista-viagens'>
                 <ListTripsPage />
             </Route>
-            <Route exact path='/Login'>
+            <Route exact path='/login'>
                 <Login />
             </Route>
-            <Route exact path='/Formulario'>
+            <Route exact path='/formulario/:viagem'>
                 <AplicationForm />
             </Route>
             <Route exact path='/'>

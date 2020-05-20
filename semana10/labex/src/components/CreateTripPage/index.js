@@ -18,7 +18,7 @@ function CreateTripPage() {
   const [description, setDescription, onChangeDescription] = useInputValue()
 
   const goToListTrips = () => {
-    history.push('/ListaViagens')
+    history.push('/lista-viagens')
   }
 
   const createTrip = () => {

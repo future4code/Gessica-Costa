@@ -9,10 +9,10 @@ function ListTripsPage() {
   const history = useHistory()
 
   const goToCreateTrip = () => {
-    history.push('/CriarViagem')
+    history.push('/criar-viagem')
   }
   const goToTripDetails = () => {
-    history.push('/DetalhesViagem')
+    history.push('/detalhes-viagem')
   }
 
   return (
