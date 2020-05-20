@@ -1,12 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
+import HeaderLogin from './HeaderLogin';
 
 function Login() {
   const history = useHistory()
-
-  const goToHomePage = () => {
-    history.push('/')
-  }
   
   const goToListTripsPage = () => {
     history.push('/ListaViagens')
@@ -14,9 +11,8 @@ function Login() {
 
   return (
     <div>
-      Login
-      <button onClick={goToHomePage}>Home</button>
-      <button onClick={goToListTripsPage}>Lista de Viagens</button>
+      <HeaderLogin />
+      <button onClick={goToListTripsPage}>Entrar</button>
     </div>
   );
 }

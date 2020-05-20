@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
+import HeaderLogin from '../HeaderLogin';
 
 function AplicationForm() {
   const history = useHistory()
@@ -10,8 +11,8 @@ function AplicationForm() {
 
   return (
     <div>
-      AplicationForm
-      <button onClick={goToHome}>Home</button>
+      <HeaderLogin />
+      <button onClick={goToHome}>Enviar</button>
     </div>
   );
 }
