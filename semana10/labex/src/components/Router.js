@@ -25,7 +25,7 @@ function Router() {
             <Route exact path='/login'>
                 <Login />
             </Route>
-            <Route exact path='/formulario/:viagem'>
+            <Route exact path='/formulario/:viagem/:id'>
                 <AplicationForm />
             </Route>
             <Route exact path='/'>

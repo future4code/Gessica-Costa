@@ -4,27 +4,49 @@ import { Form, FormData, Label } from '../Style/FormStyle'
 import { useInputValue } from '../Hooks/useInputValue'
 import { useParams, useHistory } from 'react-router-dom'
 import HeaderLogin from '../HeaderLogin';
-import Styled from 'styled-components'
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button'
-import HomePage from '../HomePage'
+import axios from 'axios'
 
 function AplicationForm() {
   const history = useHistory()
   const pathParams = useParams()
   const [name, setName, onChangeName] = useInputValue()
   const [age, setAge, onChangeAge] = useInputValue()
-  const [profission, setProfission, onChangeProfission] = useInputValue()
+  const [profession, setProfession, onChangeProfession] = useInputValue()
   const [country, setCountry, onChangeCountry] = useInputValue()
-  const [aplicationText, setAplicationText, onChangeAplicationText] = useInputValue()
+  const [applicationText, setApplicationText, onChangeApplicationText] = useInputValue()
 
-  const goToHome = () => {
-    //history.push('/')
+  const onClickSend = () => {
     setName('')
     setAge('')
-    setProfission('')
+    setProfession('')
     setCountry('')
-    setAplicationText('')
+    setApplicationText('')
+
+    const body = {
+      "name": name,
+      "age": age,
+      "applicationText": applicationText,
+      "profession": profession,
+      "country": country
+    }
+
+    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips/pathParams.id/apply',
+      body,
+      {
+        headers: { 'Content-Type': "application/json" }
+      },
+      {
+        aluno: 'gessica-costa-julian',
+        id: pathParams.id
+      })
+      .then(res => {
+        console.log('Apply to Trip: ', res.data)
+      })
+      .catch(err => {
+        console.log('Erro em Apply to Trip: ', err)
+      })
   }
 
   return (
@@ -39,14 +61,15 @@ function AplicationForm() {
             <Label>Idade:</Label>
             <Input onChange={onChangeAge} value={age} />
             <Label>Profissão:</Label>
-            <Input onChange={onChangeProfission} value={profission} />
+            <Input onChange={onChangeProfession} value={profession} />
             <Label>País:</Label>
             <Input onChange={onChangeCountry} value={country} />
             <Label>Texto de Aplicação:</Label>
-            <Input onChange={onChangeAplicationText} value={aplicationText} />
+            <Input onChange={onChangeApplicationText} value={applicationText} />
+            <Label>Viagem:</Label>
             <Input value={pathParams.viagem} disabled />
           </FormData>
-          <Button variant={'contained'} color={'primary'} onClick={goToHome}>Enviar</Button>
+          <Button variant={'contained'} color={'primary'} onClick={onClickSend}>Enviar</Button>
         </Form>
       </GridViagens>
       <Footer />

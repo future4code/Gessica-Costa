@@ -20,29 +20,31 @@ const SelectStyled = Styled(Select)`
 
 function HomePage() {
   const history = useHistory()
-  const [travel, setTravel] = useState([])
-  const [travelSelected, setTravelSelected] = useState('')
+  const [trip, setTrip] = useState([])
+  const [tripSelected, setTripSelected] = useState('')
+  const [idTripSelected, setIdTripSelected] = useState('')
 
   const goToForm = () => {
-    history.push(`/formulario/${travelSelected}`)
+    history.push(`/formulario/${tripSelected}/${idTripSelected}`)
   }
 
-  const onChangeTravel = (e) => {
-    setTravelSelected(e.target.value)
+  const onChangeTrip = (e) => {
+    setTripSelected(e.target.value.name)
+    setIdTripSelected(e.target.value.id)
   }
 
   useEffect(() => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips')
       .then(res => {
-        setTravel(res.data.trips)
+        setTrip(res.data.trips)
       })
       .catch(err => {
         console.log('Erro no Get Trips: ', err)
       })
   }, [])
 
-  const travels = travel.map((trip, i) => {
-    return <MenuItem key={i} value={trip.name}>{trip.name}</MenuItem>
+  const trips = trip.map((trip, i) => {
+    return <MenuItem key={i} value={trip}>{trip.name}</MenuItem>
   })
 
   return (
@@ -54,8 +56,8 @@ function HomePage() {
           <Form>
             <FormControl variant="filled">
               <InputLabel id={'select-label'}>Viagem</InputLabel>
-              <SelectStyled labelId={'select-label'} onChange={onChangeTravel} value={travelSelected}>
-                {travels}
+              <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
+                {trips}
               </SelectStyled>
             </FormControl>
             <Button variant={'contained'} color={'primary'} onClick={goToForm}>Aplicar para Viagem</Button>
