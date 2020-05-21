@@ -32,15 +32,8 @@ function AplicationForm() {
       "country": country
     }
 
-    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips/pathParams.id/apply',
-      body,
-      {
-        headers: { 'Content-Type': "application/json" }
-      },
-      {
-        aluno: 'gessica-costa-julian',
-        id: pathParams.id
-      })
+    axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips/${pathParams.id}/apply`,
+      body)
       .then(res => {
         console.log('Apply to Trip: ', res.data)
       })
