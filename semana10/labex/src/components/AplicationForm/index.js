@@ -36,6 +36,7 @@ function AplicationForm() {
       body)
       .then(res => {
         console.log('Apply to Trip: ', res.data)
+        window.alert('Formulário enviado com sucesso!')
       })
       .catch(err => {
         console.log('Erro em Apply to Trip: ', err)

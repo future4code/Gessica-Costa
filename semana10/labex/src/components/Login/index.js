@@ -22,10 +22,7 @@ function Login() {
     }
 
     axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/login',
-      body,
-      {
-        aluno: 'gessica-costa-julian'
-      })
+      body)
       .then(res => {
         console.log('Login: ', res.data)
         setToken(res.data.token)

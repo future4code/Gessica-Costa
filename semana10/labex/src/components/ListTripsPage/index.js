@@ -23,18 +23,6 @@ function ListTripsPage() {
   const [tripSelected, setTripSelected] = useState('')
   const [idTripSelected, setIdTripSelected] = useState('')
 
-  const goToCreateTrip = () => {
-    history.push('/criar-viagem')
-  }
-  const goToTripDetails = () => {
-    history.push('/detalhes-viagem')
-  }
-
-  const onChangeTrip = (e) => {
-    setTripSelected(e.target.value.name)
-    setIdTripSelected(e.target.value.id)
-  }
-
   useEffect(() => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips')
       .then(res => {
@@ -43,10 +31,22 @@ function ListTripsPage() {
       .catch(err => {
         console.log('Erro no Get Trips: ', err)
       })
-  }, [])
+  }, [setTrip])
+
+  const goToCreateTrip = () => {
+    history.push('/criar-viagem')
+  }
+  const goToTripDetails = () => {
+    history.push('/detalhes-viagem')
+  }
+
+  const onChangeTrip = (e) => {
+    setTripSelected(e.target.value)
+    setIdTripSelected(e.target.value)
+  }
 
   const trips = trip.map((trip, i) => {
-    return <MenuItem key={i} value={trip}>{trip.name}</MenuItem>
+    return <MenuItem key={i} value={trip.name}>{trip.name}</MenuItem>
   })
 
   return (
@@ -57,16 +57,32 @@ function ListTripsPage() {
         <ButtonChangePage onClick={goToCreateTrip}>Criar Viagem</ButtonChangePage>
       </NavBar>
       <GridViagens>
-      <Form>
-            <FormControl variant="filled">
-              <InputLabel id={'select-label'}>Viagem</InputLabel>
-              <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
-                {trips}
-              </SelectStyled>
-            </FormControl>
-            <Button variant={'contained'} color={'primary'} onClick={goToTripDetails}>Aplicar para Viagem</Button>
-          </Form>
-        <button onClick={goToTripDetails}>Detalhes da Viagem</button>
+        <Form>
+          <FormControl variant="filled">
+            <InputLabel id={'select-label'}>Viagem</InputLabel>
+            <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
+              {trips}
+            </SelectStyled>
+          </FormControl>
+          {
+            trip.filter((trip) => {
+              if (trip.name === tripSelected) {
+                return trip
+              }
+            }).map((trip, i) => {
+              return (
+                <div key={i}>
+                  <h2>{trip.name}</h2>
+                  <p><b>Planeta:</b> {trip.planet}</p>
+                  <p><b>Data:</b> {trip.date}</p>
+                  <p><b>Duração em dias:</b> {trip.durationInDays}</p>
+                  <p><b>Descrição:</b> {trip.description}</p>
+                </div>
+              )
+            })
+          }
+          <Button variant={'contained'} color={'primary'} onClick={goToTripDetails}>Ver Detalhes da Viagem</Button>
+        </Form>
       </GridViagens>
       <Footer />
     </Container>

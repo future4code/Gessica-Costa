@@ -11,9 +11,6 @@ import Button from '@material-ui/core/Button';
 import Styled from 'styled-components'
 import axios from 'axios';
 
-const Div = Styled.div`
-background-color: white;
-`
 const SelectStyled = Styled(Select)`
   width: 200px;
 `
@@ -24,15 +21,6 @@ function HomePage() {
   const [tripSelected, setTripSelected] = useState('')
   const [idTripSelected, setIdTripSelected] = useState('')
 
-  const goToForm = () => {
-    history.push(`/formulario/${tripSelected}/${idTripSelected}`)
-  }
-
-  const onChangeTrip = (e) => {
-    setTripSelected(e.target.value.name)
-    setIdTripSelected(e.target.value.id)
-  }
-
   useEffect(() => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips')
       .then(res => {
@@ -41,12 +29,29 @@ function HomePage() {
       .catch(err => {
         console.log('Erro no Get Trips: ', err)
       })
-  }, [])
+  }, [setTrip])
+
+  const goToForm = () => {
+    if (tripWanted.length !== 0) {
+      history.push(`/formulario/${tripWanted[0].name}/${tripWanted[0].id}`)
+    }
+  }
+
+  const onChangeTrip = (e) => {
+    setTripSelected(e.target.value)
+    setIdTripSelected(e.target.value)
+  }
 
   const trips = trip.map((trip, i) => {
-    return <MenuItem key={i} value={trip}>{trip.name}</MenuItem>
+    return <MenuItem key={i} value={trip.name}>{trip.name}</MenuItem>
   })
 
+  const tripWanted = trip.filter((trip) => {
+    if (trip.name === tripSelected) {
+      return trip
+    }
+  })
+  console.log(trip)
   return (
     <Container>
       <HeaderLogin />
@@ -60,6 +65,23 @@ function HomePage() {
                 {trips}
               </SelectStyled>
             </FormControl>
+            {
+              trip.filter((trip) => {
+                if (trip.name === tripSelected) {
+                  return trip
+                }
+              }).map((trip, i) => {
+                return (
+                  <div key={i}>
+                    <h2>{trip.name}</h2>
+                    <p><b>Planeta:</b> {trip.planet}</p>
+                    <p><b>Data:</b> {trip.date}</p>
+                    <p><b>Duração em dias:</b> {trip.durationInDays}</p>
+                    <p><b>Descrição:</b> {trip.description}</p>
+                  </div>
+                )
+              })
+            }
             <Button variant={'contained'} color={'primary'} onClick={goToForm}>Aplicar para Viagem</Button>
           </Form>
         </GridViagens>
