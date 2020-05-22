@@ -69,9 +69,9 @@ function CreateTripPage() {
             <Label>Planeta:</Label>
             <Input onChange={onChangePlanet} value={planet} />
             <Label>Duração:</Label>
-            <Input onChange={onChangeDuration} value={duration} />
+            <Input type={'Number'} onChange={onChangeDuration} value={duration} />
             <Label>Data:</Label>
-            <Input onChange={onChangeDate} value={date} />
+            <Input type={'Date'} format="yyyy/MM/dd" onChange={onChangeDate} value={date} />
             <Label>Descrição:</Label>
             <Input onChange={onChangeDescription} value={description} />
           </FormData>

@@ -23,7 +23,7 @@ function ListTripsPage() {
   const [tripSelected, setTripSelected] = useState('')
   const [idTripSelected, setIdTripSelected] = useState('')
 
-  useEffect(() => {
+  const getTrips = () => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips')
       .then(res => {
         setTrip(res.data.trips)
@@ -31,6 +31,10 @@ function ListTripsPage() {
       .catch(err => {
         console.log('Erro no Get Trips: ', err)
       })
+  }
+
+  useEffect(() => {
+    getTrips()
   }, [setTrip])
 
   const goToCreateTrip = () => {
@@ -39,6 +43,23 @@ function ListTripsPage() {
   const goToTripDetails = () => {
     if (tripWanted.length !== 0) {
       history.push(`/detalhes-viagem/${tripWanted[0].name}/${tripWanted[0].id}`)
+    }
+  }
+
+  const confirmDeleteTrip = () => {
+    window.confirm(`Tem certeza que deseja deletar a viagem ${tripSelected}?`) ? deleteTrip() : console.log('nao deletou')
+  }
+
+  const deleteTrip = () => {
+    if (tripWanted.length !== 0) {
+      axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips/${tripWanted[0].id}`)
+        .then(res => {
+          window.alert(`Viagem ${tripWanted[0].name} deletada com sucesso!`)
+          getTrips()
+        })
+        .catch(err => {
+          console.log('Erro em Delete Trip: ', err)
+        })
     }
   }
 
@@ -90,6 +111,7 @@ function ListTripsPage() {
             })
           }
           <Button variant={'contained'} color={'primary'} onClick={goToTripDetails}>Ver Detalhes da Viagem</Button>
+          <Button variant={'contained'} color={'secondary'} onClick={confirmDeleteTrip}>Deletar Viagem</Button>
         </Form>
       </GridViagens>
       <Footer />
