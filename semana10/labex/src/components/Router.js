@@ -13,7 +13,7 @@ function Router() {
   return (
     <BrowserRouter>
         <Switch>
-            <Route exact path='/detalhes-viagem'>
+            <Route exact path='/detalhes-viagem/:viagem/:id'>
                 <TripDetailsPage />
             </Route>
             <Route exact path='/criar-viagem'>

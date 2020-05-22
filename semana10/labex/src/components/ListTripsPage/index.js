@@ -37,7 +37,9 @@ function ListTripsPage() {
     history.push('/criar-viagem')
   }
   const goToTripDetails = () => {
-    history.push('/detalhes-viagem')
+    if (tripWanted.length !== 0) {
+      history.push(`/detalhes-viagem/${tripWanted[0].name}/${tripWanted[0].id}`)
+    }
   }
 
   const onChangeTrip = (e) => {
@@ -47,6 +49,12 @@ function ListTripsPage() {
 
   const trips = trip.map((trip, i) => {
     return <MenuItem key={i} value={trip.name}>{trip.name}</MenuItem>
+  })
+
+  const tripWanted = trip.filter((trip) => {
+    if (trip.name === tripSelected) {
+      return trip
+    }
   })
 
   return (
