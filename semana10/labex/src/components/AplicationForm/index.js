@@ -53,7 +53,7 @@ function AplicationForm() {
             <Label>Nome:</Label>
             <Input onChange={onChangeName} value={name} />
             <Label>Idade:</Label>
-            <Input onChange={onChangeAge} value={age} />
+            <Input type={'Number'} onChange={onChangeAge} value={age} />
             <Label>Profissão:</Label>
             <Input onChange={onChangeProfession} value={profession} />
             <Label>País:</Label>

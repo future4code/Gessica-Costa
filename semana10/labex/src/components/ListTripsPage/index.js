@@ -47,7 +47,7 @@ function ListTripsPage() {
   }
 
   const confirmDeleteTrip = () => {
-    window.confirm(`Tem certeza que deseja deletar a viagem ${tripSelected}?`) ? deleteTrip() : console.log('nao deletou')
+    window.confirm(`Tem certeza que deseja deletar a viagem ${tripSelected}?`) && deleteTrip()
   }
 
   const deleteTrip = () => {

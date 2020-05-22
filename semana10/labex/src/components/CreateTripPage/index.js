@@ -43,7 +43,7 @@ function CreateTripPage() {
         headers: { 'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJ6Q0Z4bnFESDBXVXY0dGlRYndjIiwiZW1haWwiOiJnZXNzaWNhQGdtYWlsLmNvbSIsImlhdCI6MTU5MDA5NDkzMX0.bScbYZqc4IYovoYrRtlxte9t0Q-WtQrnIg2MY2sADME' }
       })
       .then(res => {
-        console.log('Create Trip: ', res.data)
+        window.alert(`Viagem ${res.data.trip.name} criada com sucesso!`)
       })
       .catch(err => {
         console.log('Create Trip: ', err)
