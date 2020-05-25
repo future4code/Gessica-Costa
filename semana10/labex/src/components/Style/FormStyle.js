@@ -3,7 +3,7 @@ import Styled from 'styled-components'
 export const Form = Styled.div`
   width: 90%;
   max-width: 400px;
-  background-color: #E0FBFC;
+  background-color: rgba(224, 251, 252, 0.6);
   display: flex;
   flex-direction: column;
   align-items: center;

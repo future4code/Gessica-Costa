@@ -1,11 +1,24 @@
 import Styled from 'styled-components'
+import { makeStyles } from '@material-ui/core/styles'
+
+export const useStyles = makeStyles({
+  root: {
+    background: '#FF5F00',
+    color: 'white',
+    '&:hover': {
+      background: '#E05400',
+    }
+  }
+})
 
 export const Container = Styled.div`
 display: flex;
 flex-direction: column;
 min-height: 100vh;
 width: 100vw;
-background-color: #293241;
+max-width:100%;
+background-image: url('https://wallpaperaccess.com/full/691764.jpg');
+background-attachment: fixed;
 `
 export const GridViagens = Styled.div`
 width: 100%;

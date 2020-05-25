@@ -1,7 +1,7 @@
 import Styled from 'styled-components'
 
 export const NavBar = Styled.div`
-background-color: #8C4F47;
+background-color: transparent;
 text-align: right;
 padding: 2px 20px;
 `
@@ -13,10 +13,10 @@ border: none;
 border-radius: 7px;
 font-size: 17px;
 cursor: pointer;
-margin-left: 50px;
+margin-left: 20px;
 
 :hover {
-  background-color: rgba(186,139,139,0.25);
+  opacity: 0.8;
 }
 `
 export const ButtonPage = Styled.button`

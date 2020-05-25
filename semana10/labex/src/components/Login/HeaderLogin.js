@@ -7,12 +7,16 @@ const Container = Styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #EE6C4D;
-  padding: 5px 20px;
+  background-color: transparent;
+  padding: 20px 20px 40px;
 
   img {
-      width: 60px;
+      width: 130px;
       cursor: pointer;
+
+      :hover {
+        opacity: 0.8;
+      }
   }
 `
 

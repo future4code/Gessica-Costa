@@ -114,7 +114,6 @@ function ListTripsPage() {
           <Button variant={'contained'} color={'secondary'} onClick={confirmDeleteTrip}>Deletar Viagem</Button>
         </Form>
       </GridViagens>
-      <Footer />
     </Container>
   );
 }

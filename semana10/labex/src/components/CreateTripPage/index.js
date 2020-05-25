@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, GridViagens, SideBar, Conteudo, Footer } from '../Style/Style'
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useInputValue } from '../Hooks/useInputValue'
@@ -8,9 +7,11 @@ import Styled from 'styled-components'
 import HeaderLogout from '../HeaderLogout';
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button'
+import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
 import axios from 'axios'
 
 function CreateTripPage() {
+  const classes = useStyles()
   const history = useHistory()
   const [name, setName, onChangeName] = useInputValue()
   const [planet, setPlanet, onChangePlanet] = useInputValue()
@@ -75,10 +76,9 @@ function CreateTripPage() {
             <Label>Descrição:</Label>
             <Input onChange={onChangeDescription} value={description} />
           </FormData>
-          <Button variant={'contained'} color={'primary'} onClick={createTrip}>Enviar</Button>
+          <Button className={classes.root} variant={'contained'} color={'primary'} onClick={createTrip}>Enviar</Button>
         </Form>
       </GridViagens>
-      <Footer />
     </Container>
   );
 }

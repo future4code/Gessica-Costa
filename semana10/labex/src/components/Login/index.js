@@ -57,7 +57,6 @@ function Login() {
           <Button variant={'contained'} color={'primary'} onClick={goToListTripsPage} disabled>Cadastrar</Button>
         </Form>
       </GridViagens>
-      <Footer />
     </Container>
   );
 }

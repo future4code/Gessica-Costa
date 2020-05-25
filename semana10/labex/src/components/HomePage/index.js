@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import HeaderLogin from '../HeaderLogin'
-import { Container, GridViagens, SideBar, Conteudo, Footer } from '../Style/Style'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
 import Select from '@material-ui/core/Select'
@@ -8,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
 import Styled from 'styled-components'
 import axios from 'axios';
 
@@ -16,6 +16,7 @@ const SelectStyled = Styled(Select)`
 `
 
 function HomePage() {
+  const classes = useStyles()
   const history = useHistory()
   const [trip, setTrip] = useState([])
   const [tripSelected, setTripSelected] = useState('')
@@ -82,11 +83,10 @@ function HomePage() {
                 )
               })
             }
-            <Button variant={'contained'} color={'primary'} onClick={goToForm}>Aplicar para Viagem</Button>
+            <Button className={classes.root} variant={'contained'} color={'primary'} onClick={goToForm}>Aplicar para Viagem</Button>
           </Form>
         </GridViagens>
       </Conteudo>
-      <Footer />
     </Container>
   );
 }

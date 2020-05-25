@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Container, GridViagens, SideBar, Conteudo, Footer } from '../Style/Style'
+import Button from '@material-ui/core/Button'
+import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useInputValue } from '../Hooks/useInputValue'
 import { useParams, useHistory } from 'react-router-dom'
 import HeaderLogin from '../HeaderLogin';
 import Input from '@material-ui/core/Input'
-import Button from '@material-ui/core/Button'
+
 import axios from 'axios'
 
 function AplicationForm() {
+  const classes = useStyles()
   const history = useHistory()
   const pathParams = useParams()
   const [name, setName, onChangeName] = useInputValue()
@@ -63,10 +65,9 @@ function AplicationForm() {
             <Label>Viagem:</Label>
             <Input value={pathParams.viagem} disabled />
           </FormData>
-          <Button variant={'contained'} color={'primary'} onClick={onClickSend}>Enviar</Button>
+          <Button className={classes.root} variant={'contained'} onClick={onClickSend}>Enviar</Button>
         </Form>
       </GridViagens>
-      <Footer />
     </Container>
   );
 }

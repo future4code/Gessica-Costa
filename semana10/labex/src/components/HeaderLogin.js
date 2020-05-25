@@ -7,17 +7,21 @@ const Container = Styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #EE6C4D;
-  padding: 5px 20px;
+  background-color: transparent;
+  padding: 20px 20px 40px;
 
   img {
-      width: 60px;
+      width: 130px;
       cursor: pointer;
+
+      :hover {
+        opacity: 0.8;
+      }
   }
 
   button {
       padding: 5px 10px;
-      background-color: white;
+      background-color: transparent;
       color: #FF5F00;
       border: none;
       border-radius: 7px;
@@ -25,10 +29,8 @@ const Container = Styled.div`
       cursor: pointer;
 
       :hover {
-      background-color: #EE6C4D;
-      color: white;
-      border: 2px solid white;
-    }
+        opacity: 0.8;
+      }
   }
 `
 
