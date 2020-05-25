@@ -41,9 +41,8 @@ function ListTripsPage() {
     history.push('/criar-viagem')
   }
   const goToTripDetails = () => {
-    if (tripWanted.length !== 0) {
+    tripWanted &&
       history.push(`/detalhes-viagem/${tripWanted[0].name}/${tripWanted[0].id}`)
-    }
   }
 
   const confirmDeleteTrip = () => {
@@ -51,7 +50,7 @@ function ListTripsPage() {
   }
 
   const deleteTrip = () => {
-    if (tripWanted.length !== 0) {
+    tripWanted &&
       axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips/${tripWanted[0].id}`)
         .then(res => {
           window.alert(`Viagem ${tripWanted[0].name} deletada com sucesso!`)
@@ -60,7 +59,6 @@ function ListTripsPage() {
         .catch(err => {
           console.log('Erro em Delete Trip: ', err)
         })
-    }
   }
 
   const onChangeTrip = (e) => {

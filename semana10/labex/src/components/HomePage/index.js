@@ -33,9 +33,9 @@ function HomePage() {
   }, [setTrip])
 
   const goToForm = () => {
-    if (tripWanted.length !== 0) {
+    tripWanted.length &&
       history.push(`/formulario/${tripWanted[0].name}/${tripWanted[0].id}`)
-    }
+
   }
 
   const onChangeTrip = (e) => {
