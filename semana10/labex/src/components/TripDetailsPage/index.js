@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 const ContainerNewUrl = Styled(Container)`
-  background-image: url('http://hdwpro.com/wp-content/uploads/2017/10/Free-Space-Background.png');
+  /* background-image: url('http://hdwpro.com/wp-content/uploads/2017/10/Free-Space-Background.png'); */
 `
 const SelectStyled = Styled(Select)`
   width: 200px;

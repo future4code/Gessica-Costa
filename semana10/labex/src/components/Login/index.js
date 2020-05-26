@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Container, GridViagens, SideBar, Conteudo, Footer } from '../Style/Style'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
 import HeaderLogin from './HeaderLogin';
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button'
+import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
 import { useInputValue } from '../Hooks/useInputValue';
 import axios from 'axios'
 
 function Login() {
+  const classes = useStyles()
   const history = useHistory()
   const [email, setEmail, onChangeEmail] = useInputValue()
   const [password, setPassword, onChangePassword] = useInputValue()
@@ -42,11 +43,11 @@ function Login() {
           <h2>Login</h2>
           <FormData>
             <Label>Email:</Label>
-            <Input onChange={onChangeEmail} value={email} />
+            <Input className={classes.input} onChange={onChangeEmail} value={email} />
             <Label>Senha:</Label>
-            <Input onChange={onChangePassword} value={password} />
+            <Input className={classes.input} onChange={onChangePassword} value={password} />
           </FormData>
-          <Button variant={'contained'} color={'primary'} onClick={goToListTripsPage}>Entrar</Button>
+          <Button className={classes.root} variant={'contained'} color={'primary'} onClick={goToListTripsPage}>Entrar</Button>
           <h2>Cadastre-se</h2>
           <FormData>
             <Label>Email:</Label>
@@ -54,7 +55,7 @@ function Login() {
             <Label>Senha:</Label>
             <Input disabled />
           </FormData>
-          <Button variant={'contained'} color={'primary'} onClick={goToListTripsPage} disabled>Cadastrar</Button>
+          <Button className={classes.root} variant={'contained'} color={'primary'} onClick={goToListTripsPage} disabled>Cadastrar</Button>
         </Form>
       </GridViagens>
     </Container>

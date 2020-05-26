@@ -20,7 +20,6 @@ const Container = Styled.div`
   }
 
   button {
-      padding: 5px 10px;
       background-color: transparent;
       color: #FF5F00;
       border: none;

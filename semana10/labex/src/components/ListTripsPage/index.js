@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Container, GridViagens, SideBar, Conteudo, Footer } from '../Style/Style'
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import HeaderLogout from '../HeaderLogout'
@@ -10,13 +9,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
 import axios from 'axios';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton'
 
 const SelectStyled = Styled(Select)`
   width: 200px;
 `
 
 function ListTripsPage() {
+  const classes = useStyles()
   const history = useHistory()
   const pathParams = useParams()
   const [trip, setTrip] = useState([])
@@ -86,8 +89,8 @@ function ListTripsPage() {
       <GridViagens>
         <Form>
           <FormControl variant="filled">
-            <InputLabel id={'select-label'}>Viagem</InputLabel>
-            <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
+            <InputLabel className={classes.input} id={'select-label'}>Viagem</InputLabel>
+            <SelectStyled className={classes.input} labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
               {trips}
             </SelectStyled>
           </FormControl>
@@ -108,8 +111,8 @@ function ListTripsPage() {
               )
             })
           }
-          <Button variant={'contained'} color={'primary'} onClick={goToTripDetails}>Ver Detalhes da Viagem</Button>
-          <Button variant={'contained'} color={'secondary'} onClick={confirmDeleteTrip}>Deletar Viagem</Button>
+          <Button className={classes.root} variant={'contained'} color={'primary'} onClick={goToTripDetails}>Ver Detalhes da Viagem</Button>
+          <IconButton onClick={confirmDeleteTrip}><DeleteIcon /></IconButton>
         </Form>
       </GridViagens>
     </Container>

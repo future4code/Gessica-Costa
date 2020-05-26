@@ -7,8 +7,17 @@ export const useStyles = makeStyles({
     color: 'white',
     '&:hover': {
       background: '#E05400',
+    },
+  },
+  input: {
+    '&:after': {
+      color: '#FF5F00',
+      borderColor: '#FF5F00',
+    },
+    '&:focused': {
+      color: '#FF5F00',
     }
-  }
+  },
 })
 
 export const Container = Styled.div`
@@ -17,7 +26,7 @@ flex-direction: column;
 min-height: 100vh;
 width: 100vw;
 max-width:100%;
-background-image: url('https://wallpaperaccess.com/full/691764.jpg');
+background-image: url('https://wallpaperaccess.com/full/691897.jpg');
 background-attachment: fixed;
 `
 export const GridViagens = Styled.div`

@@ -35,7 +35,6 @@ function HomePage() {
   const goToForm = () => {
     tripWanted.length &&
       history.push(`/formulario/${tripWanted[0].name}/${tripWanted[0].id}`)
-
   }
 
   const onChangeTrip = (e) => {
@@ -52,7 +51,7 @@ function HomePage() {
       return trip
     }
   })
-  console.log(trip)
+
   return (
     <Container>
       <HeaderLogin />
