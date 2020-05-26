@@ -60,7 +60,7 @@ function HomePage() {
         <GridViagens>
           <Form>
             <FormControl variant="filled">
-              <InputLabel id={'select-label'}>Viagem</InputLabel>
+              <InputLabel fullWidth id={'select-label'}>Viagem</InputLabel>
               <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
                 {trips}
               </SelectStyled>

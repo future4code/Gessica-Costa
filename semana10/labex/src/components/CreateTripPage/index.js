@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useInputValue } from '../Hooks/useInputValue'
@@ -18,6 +18,12 @@ function CreateTripPage() {
   const [date, setDate, onChangeDate] = useInputValue()
   const [duration, setDuration, onChangeDuration] = useInputValue()
   const [description, setDescription, onChangeDescription] = useInputValue()
+
+  useEffect(() => {
+
+    localStorage.getItem('token') === null && history.push('/')
+
+  }, [history])
 
   const goToListTrips = () => {
     history.push('/lista-viagens')
@@ -41,7 +47,7 @@ function CreateTripPage() {
     axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips`,
       body,
       {
-        headers: { 'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJ6Q0Z4bnFESDBXVXY0dGlRYndjIiwiZW1haWwiOiJnZXNzaWNhQGdtYWlsLmNvbSIsImlhdCI6MTU5MDA5NDkzMX0.bScbYZqc4IYovoYrRtlxte9t0Q-WtQrnIg2MY2sADME' }
+        headers: { 'auth': localStorage.getItem('token') }
       })
       .then(res => {
         window.alert(`Viagem ${res.data.trip.name} criada com sucesso!`)

@@ -37,6 +37,7 @@ function HeaderLogout(props) {
   const history = useHistory()
 
   const goToHome = () => {
+    localStorage.clear()
     history.push('/')
   }
 

@@ -30,13 +30,16 @@ function TripDetailsPage() {
   let mapsim
 
   useEffect(() => {
+
+    localStorage.getItem('token') === null && history.push('/')
+
     getCandidates()
-  }, [setCandidates])
+  }, [setCandidates, history])
 
   const getCandidates = () => {
     axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trip/${pathParams.id}`,
       {
-        headers: { 'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJ6Q0Z4bnFESDBXVXY0dGlRYndjIiwiZW1haWwiOiJnZXNzaWNhQGdtYWlsLmNvbSIsImlhdCI6MTU5MDA5NDkzMX0.bScbYZqc4IYovoYrRtlxte9t0Q-WtQrnIg2MY2sADME' }
+        headers: { 'auth': localStorage.getItem('token') }
       })
       .then(res => {
         console.log('Get Trip Detail: ', res.data.trip)
@@ -61,7 +64,7 @@ function TripDetailsPage() {
     axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips/${pathParams.id}/candidates/${id}/decide`,
       body,
       {
-        headers: { 'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJ6Q0Z4bnFESDBXVXY0dGlRYndjIiwiZW1haWwiOiJnZXNzaWNhQGdtYWlsLmNvbSIsImlhdCI6MTU5MDA5NDkzMX0.bScbYZqc4IYovoYrRtlxte9t0Q-WtQrnIg2MY2sADME' }
+        headers: { 'auth': localStorage.getItem('token') }
       })
       .then(res => {
         decide ? window.alert(`Candidato aprovado com sucesso!`) : (window.alert(`Candidato rejeitado.`))

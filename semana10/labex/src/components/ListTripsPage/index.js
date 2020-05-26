@@ -37,8 +37,12 @@ function ListTripsPage() {
   }
 
   useEffect(() => {
+
+    localStorage.getItem('token') === null && history.push('/')
+
     getTrips()
-  }, [setTrip])
+
+  }, [setTrip, history])
 
   const goToCreateTrip = () => {
     history.push('/criar-viagem')
@@ -89,7 +93,7 @@ function ListTripsPage() {
       <GridViagens>
         <Form>
           <FormControl variant="filled">
-            <InputLabel className={classes.input} id={'select-label'}>Viagem</InputLabel>
+            <InputLabel className={classes.input2} id={'select-label'}>Viagem</InputLabel>
             <SelectStyled className={classes.input} labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
               {trips}
             </SelectStyled>

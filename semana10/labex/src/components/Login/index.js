@@ -13,7 +13,6 @@ function Login() {
   const history = useHistory()
   const [email, setEmail, onChangeEmail] = useInputValue()
   const [password, setPassword, onChangePassword] = useInputValue()
-  const [token, setToken] = useInputValue()
 
   const goToListTripsPage = () => {
 
@@ -26,15 +25,15 @@ function Login() {
       body)
       .then(res => {
         console.log('Login: ', res.data)
-        setToken(res.data.token)
-        
+        localStorage.setItem('token', res.data.token)
+        history.push(`/lista-viagens/`)
       })
       .catch(err => {
+        alert('Login falhou')
         console.log('Erro em Login: ', err)
       })
-      history.push(`/lista-viagens/`)
   }
-  
+
   return (
     <Container>
       <HeaderLogin />
@@ -45,7 +44,7 @@ function Login() {
             <Label>Email:</Label>
             <Input className={classes.input} onChange={onChangeEmail} value={email} />
             <Label>Senha:</Label>
-            <Input className={classes.input} onChange={onChangePassword} value={password} />
+            <Input type={'password'} className={classes.input} onChange={onChangePassword} value={password} />
           </FormData>
           <Button className={classes.root} variant={'contained'} color={'primary'} onClick={goToListTripsPage}>Entrar</Button>
           <h2>Cadastre-se</h2>
