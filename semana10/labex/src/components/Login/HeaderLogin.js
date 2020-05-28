@@ -4,11 +4,13 @@ import Logo from '../../img/labex.png'
 import Styled from 'styled-components'
 
 const Container = Styled.div`
+  height: 36px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-  padding: 20px 20px 40px;
+  padding: 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
   img {
       width: 130px;

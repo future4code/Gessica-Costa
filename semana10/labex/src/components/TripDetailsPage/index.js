@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, GridViagens, SideBar, Conteudo, Footer } from '../Style/Style'
+import { Container, GridViagens, SideBar, Conteudo, theme } from '../Style/Style'
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useInputValue } from '../Hooks/useInputValue'
@@ -12,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { MuiThemeProvider } from '@material-ui/core';
 
 const ContainerNewUrl = Styled(Container)`
   /* background-image: url('http://hdwpro.com/wp-content/uploads/2017/10/Free-Space-Background.png'); */
@@ -86,8 +87,9 @@ function TripDetailsPage() {
           <p><b>Profissão:</b> {c.profession}</p>
           <p><b>País:</b> {c.country}</p>
           <p><b>Texto de Aplicação:</b> {c.applicationText}</p>
-          <Button variant={'outlined'} color={'primary'} onClick={() => approveCandidate(c.id, true, c.name)}>Aprovar</Button>
-          <Button variant={'outlined'} color={'secondary'} onClick={() => approveCandidate(c.id, false, c.name)}>Rejeitar</Button>
+          <Button variant={'contained'} color={'primary'} onClick={() => approveCandidate(c.id, true, c.name)}>Aprovar</Button>
+          <label> </label>
+          <Button variant={'contained'} color={'secondary'} onClick={() => approveCandidate(c.id, false, c.name)}>Rejeitar</Button>
           <hr />
         </div>
       )
@@ -97,17 +99,19 @@ function TripDetailsPage() {
   return (
     <ContainerNewUrl>
       <HeaderLogout />
-      <NavBar>
-        <ButtonChangePage onClick={goToListTrips}>Lista de Viagens</ButtonChangePage>
-        <ButtonChangePage onClick={goToCreateTrip}>Criar Viagem</ButtonChangePage>
-      </NavBar>
-      <GridViagens>
-        <Form>
-          <h2>{pathParams.viagem}</h2>
-          <h2>Candidatos</h2>
-          {mapsim}
-        </Form>
-      </GridViagens>
+      <MuiThemeProvider theme={theme}>
+        <NavBar>
+          <ButtonChangePage onClick={goToListTrips}>Lista de Viagens</ButtonChangePage>
+          <ButtonChangePage onClick={goToCreateTrip}>Criar Viagem</ButtonChangePage>
+        </NavBar>
+        <GridViagens>
+          <Form>
+            <h2>{pathParams.viagem}</h2>
+            <h2>Candidatos</h2>
+            {mapsim}
+          </Form>
+        </GridViagens>
+      </MuiThemeProvider>
     </ContainerNewUrl>
   );
 }

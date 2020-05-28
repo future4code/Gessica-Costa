@@ -1,6 +1,10 @@
 import Styled from 'styled-components'
+import Select from '@material-ui/core/Select'
 
-export const Form = Styled.div`
+export const SelectStyled = Styled(Select)`
+  min-width: 200px;
+`
+export const Form = Styled.form`
   width: 90%;
   max-width: 400px;
   background-color: rgba(224, 251, 252, 0.7);

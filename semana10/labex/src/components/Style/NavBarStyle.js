@@ -4,6 +4,7 @@ export const NavBar = Styled.div`
 background-color: transparent;
 text-align: right;
 padding: 2px 20px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 `
 export const ButtonChangePage = Styled.button`
 padding: 5px 5px;

@@ -2,13 +2,17 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import Logo from '../img/labex.png'
 import Styled from 'styled-components'
+import Button from '@material-ui/core/Button'
+import { theme } from './Style/Style'
+import { MuiThemeProvider } from '@material-ui/core';
 
 const Container = Styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-  padding: 20px 20px 40px;
+  padding: 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
   img {
       width: 130px;
@@ -20,11 +24,9 @@ const Container = Styled.div`
   }
 
   button {
-      background-color: transparent;
-      color: #FF5F00;
-      border: none;
-      border-radius: 7px;
-      font-size: 20px;
+      margin: 0;
+      color: white;
+      border-color: white;
       cursor: pointer;
 
       :hover {
@@ -45,8 +47,10 @@ function HeaderLogin(props) {
 
   return (
     <Container>
-      <img onClick={goToHome} src={Logo} />
-      <button onClick={goToLogin}>Login</button>
+      <MuiThemeProvider theme={theme}>
+        <img onClick={goToHome} src={Logo} />
+        <Button variant={'outlined'} color={'primary'} onClick={goToLogin}>Login</Button>
+      </MuiThemeProvider>
     </Container>
   );
 }

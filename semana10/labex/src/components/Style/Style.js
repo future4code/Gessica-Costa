@@ -1,26 +1,18 @@
 import Styled from 'styled-components'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
 
-export const useStyles = makeStyles({
-  root: {
-    background: '#FF5F00',
-    color: 'white',
-    '&:hover': {
-      background: '#E05400',
+export const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#FF5F00',
+      dark: '#00FF00',
     },
-  },
-  input: {
-    '&:after': {
-      color: '#FF5F00',
-      borderColor: '#FF5F00',
+    secondary: {
+      main: '#FF0000',
     },
-    '&:focused': {
-      color: '#FF5F00',
+    default: {
+      color: 'white',
     }
-  },
-  input2: {
-    '&:before': {color: '#FF5F00',
-  },
   },
 })
 

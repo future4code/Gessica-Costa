@@ -1,28 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
-import { Form, FormData, Label } from '../Style/FormStyle'
-import { useInputValue } from '../Hooks/useInputValue'
+import { Form, FormData, Label, SelectStyled } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
-import Styled from 'styled-components'
+import { useForm } from '../Hooks/useForm'
 import HeaderLogout from '../HeaderLogout';
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button'
-import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
+import { Container, GridViagens, theme } from '../Style/Style'
 import axios from 'axios'
+import { MuiThemeProvider } from '@material-ui/core';
+import { planets } from '../Selects';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
 
 function CreateTripPage() {
-  const classes = useStyles()
   const history = useHistory()
-  const [name, setName, onChangeName] = useInputValue()
-  const [planet, setPlanet, onChangePlanet] = useInputValue()
-  const [date, setDate, onChangeDate] = useInputValue()
-  const [duration, setDuration, onChangeDuration] = useInputValue()
-  const [description, setDescription, onChangeDescription] = useInputValue()
+  const { form, onChange, resetValues } = useForm({
+    name: '',
+    planet: '',
+    date: '',
+    description: '',
+    durationInDays: ''
+  })
+
+  const handleInputChange = e => {
+    const { value, name } = e.target;
+    onChange(name, value);
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log('form', form)
+    createTrip()
+  }
 
   useEffect(() => {
-
     localStorage.getItem('token') === null && history.push('/')
-
   }, [history])
 
   const goToListTrips = () => {
@@ -30,35 +43,28 @@ function CreateTripPage() {
   }
 
   const createTrip = () => {
-    setName('')
-    setPlanet('')
-    setDate('')
-    setDuration('')
-    setDescription('')
-
-    const body = {
-      "name": name,
-      "planet": planet,
-      "date": date,
-      "description": description,
-      "durationInDays": duration
-    }
 
     axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips`,
-      body,
+      form,
       {
         headers: { 'auth': localStorage.getItem('token') }
       })
       .then(res => {
         window.alert(`Viagem ${res.data.trip.name} criada com sucesso!`)
+        resetValues()
       })
       .catch(err => {
         console.log('Create Trip: ', err)
       })
-
   }
 
-
+  let today = new Date()
+  let day = today.getDate()
+  let month = today.getMonth() + 1
+  const year = today.getFullYear();
+  if (day < 10) { day = '0' + day }
+  if (month < 10) { month = '0' + month }
+  today = year + '-' + month + '-' + day
 
   return (
     <Container>
@@ -68,21 +74,33 @@ function CreateTripPage() {
         <ButtonPage>Criar Viagem</ButtonPage>
       </NavBar>
       <GridViagens>
-        <Form>
-          <h2>Criar Viagem</h2>
-          <FormData>
-            <Label>Nome:</Label>
-            <Input onChange={onChangeName} value={name} />
-            <Label>Planeta:</Label>
-            <Input onChange={onChangePlanet} value={planet} />
-            <Label>Duração:</Label>
-            <Input type={'Number'} onChange={onChangeDuration} value={duration} />
-            <Label>Data:</Label>
-            <Input type={'Date'} format="yyyy/MM/dd" onChange={onChangeDate} value={date} />
-            <Label>Descrição:</Label>
-            <Input onChange={onChangeDescription} value={description} />
-          </FormData>
-          <Button className={classes.root} variant={'contained'} color={'primary'} onClick={createTrip}>Enviar</Button>
+        <Form onSubmit={handleSubmit}>
+          <MuiThemeProvider theme={theme}>
+            <h2>Criar Viagem</h2>
+            <FormData>
+              <Label>Nome:</Label>
+              <Input onChange={handleInputChange} value={form.name} name={'name'} type={'text'} inputProps={{ pattern: '[A-Za-zÀ-ú ]{5,}', title: 'O nome deve conter no mínimo 5 letras.' }} required />
+              <Label>Planeta:</Label>
+              <FormControl required>
+                <SelectStyled onChange={handleInputChange} value={form.planet} name={'planet'} type={'text'}>
+                  {
+                    planets.map((planet, i) => {
+                      return (
+                        <MenuItem key={i} value={planet}>{planet}</MenuItem>
+                      )
+                    })
+                  }
+                </SelectStyled>
+              </FormControl>
+              <Label>Duração:</Label>
+              <Input onChange={handleInputChange} value={form.durationInDays} name={'durationInDays'} type={'Number'} inputProps={{ min: '50' }} required />
+              <Label>Data:</Label>
+              <Input onChange={handleInputChange} value={form.date} name={'date'} type={'date'} inputProps={{ min: today }} required />
+              <Label>Descrição:</Label>
+              <Input onChange={handleInputChange} value={form.description} name={'description'} type={'text'} inputProps={{ pattern: '[A-Za-zÀ-ú,.?!0-9 ]{30,}', title: 'A descrição deve conter no mínimo 50 letras.' }} required />
+              <Button type='submit' variant={'contained'} color={'primary'}>Enviar</Button>
+            </FormData>
+          </MuiThemeProvider>
         </Form>
       </GridViagens>
     </Container>

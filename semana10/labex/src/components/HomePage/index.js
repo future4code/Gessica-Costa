@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import HeaderLogin from '../HeaderLogin'
-import { Form, FormData, Label } from '../Style/FormStyle'
+import { Form, SelectStyled, FormData, Label } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
-import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import { Container, GridViagens, SideBar, Conteudo, Footer, useStyles } from '../Style/Style'
-import Styled from 'styled-components'
+import { Container, GridViagens, SideBar, Conteudo, theme } from '../Style/Style'
 import axios from 'axios';
-
-const SelectStyled = Styled(Select)`
-  width: 200px;
-`
+import { MuiThemeProvider } from '@material-ui/core';
 
 function HomePage() {
-  const classes = useStyles()
   const history = useHistory()
   const [trip, setTrip] = useState([])
   const [tripSelected, setTripSelected] = useState('')
@@ -43,7 +37,7 @@ function HomePage() {
   }
 
   const trips = trip.map((trip, i) => {
-    return <MenuItem key={i} value={trip.name}>{trip.name}</MenuItem>
+    return <MenuItem key={i} value={trip.name}>{trip.name} - {trip.planet}</MenuItem>
   })
 
   const tripWanted = trip.filter((trip) => {
@@ -59,30 +53,32 @@ function HomePage() {
         <SideBar></SideBar>
         <GridViagens>
           <Form>
-            <FormControl variant="filled">
-              <InputLabel fullWidth id={'select-label'}>Viagem</InputLabel>
-              <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
-                {trips}
-              </SelectStyled>
-            </FormControl>
-            {
-              trip.filter((trip) => {
-                if (trip.name === tripSelected) {
-                  return trip
-                }
-              }).map((trip, i) => {
-                return (
-                  <div key={i}>
-                    <h2>{trip.name}</h2>
-                    <p><b>Planeta:</b> {trip.planet}</p>
-                    <p><b>Data:</b> {trip.date}</p>
-                    <p><b>Duração em dias:</b> {trip.durationInDays}</p>
-                    <p><b>Descrição:</b> {trip.description}</p>
-                  </div>
-                )
-              })
-            }
-            <Button className={classes.root} variant={'contained'} color={'primary'} onClick={goToForm}>Aplicar para Viagem</Button>
+            <MuiThemeProvider theme={theme}>
+              <FormControl variant="filled">
+                <InputLabel id={'select-label'} color={'primary'}>Viagem</InputLabel>
+                <SelectStyled labelId={'select-label'} onChange={onChangeTrip} value={tripSelected}>
+                  {trips}
+                </SelectStyled>
+              </FormControl>
+              {
+                trip.filter((trip) => {
+                  if (trip.name === tripSelected) {
+                    return trip
+                  }
+                }).map((trip, i) => {
+                  return (
+                    <div key={i}>
+                      <h2>{trip.name}</h2>
+                      <p><b>Planeta:</b> {trip.planet}</p>
+                      <p><b>Data:</b> {trip.date}</p>
+                      <p><b>Duração em dias:</b> {trip.durationInDays}</p>
+                      <p><b>Descrição:</b> {trip.description}</p>
+                    </div>
+                  )
+                })
+              }
+              <Button variant={'contained'} color="primary.dark" onClick={goToForm}>Aplicar para Viagem</Button>
+            </MuiThemeProvider>
           </Form>
         </GridViagens>
       </Conteudo>
