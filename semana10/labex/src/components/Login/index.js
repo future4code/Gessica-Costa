@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, FormData, Label } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
 import HeaderLogin from './HeaderLogin';
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button'
-import { Container, GridViagens, SideBar, Conteudo, theme } from '../Style/Style'
+import { Container, GridViagens, theme } from '../Style/Style'
 import { useInputValue } from '../Hooks/useInputValue';
 import axios from 'axios'
 import { MuiThemeProvider } from '@material-ui/core';
@@ -24,13 +24,11 @@ function Login() {
     axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/login',
       body)
       .then(res => {
-        console.log('Login: ', res.data)
         localStorage.setItem('token', res.data.token)
         history.push(`/lista-viagens/`)
       })
       .catch(err => {
-        alert('Login falhou')
-        console.log('Erro em Login: ', err)
+        window.alert('Login falhou')
       })
   }
 

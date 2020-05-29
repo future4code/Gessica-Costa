@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HeaderLogin from '../HeaderLogin'
-import { Form, SelectStyled, FormData, Label } from '../Style/FormStyle'
+import { Form, SelectStyled } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,7 +14,6 @@ function HomePage() {
   const history = useHistory()
   const [trip, setTrip] = useState([])
   const [tripSelected, setTripSelected] = useState('')
-  const [idTripSelected, setIdTripSelected] = useState('')
 
   useEffect(() => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips')
@@ -22,7 +21,7 @@ function HomePage() {
         setTrip(res.data.trips)
       })
       .catch(err => {
-        console.log('Erro no Get Trips: ', err)
+        window.alert('Listar viagens falhou')
       })
   }, [setTrip])
 
@@ -33,7 +32,6 @@ function HomePage() {
 
   const onChangeTrip = (e) => {
     setTripSelected(e.target.value)
-    setIdTripSelected(e.target.value)
   }
 
   const trips = trip.map((trip, i) => {
@@ -77,7 +75,7 @@ function HomePage() {
                   )
                 })
               }
-              <Button variant={'contained'} color="primary.dark" onClick={goToForm}>Aplicar para Viagem</Button>
+              <Button variant={'contained'} color="primary" onClick={goToForm}>Aplicar para Viagem</Button>
             </MuiThemeProvider>
           </Form>
         </GridViagens>

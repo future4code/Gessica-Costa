@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
-import { Form, FormData, Label } from '../Style/FormStyle'
+import { Form } from '../Style/FormStyle'
 import HeaderLogout from '../HeaderLogout'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Styled from 'styled-components'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import { Container, GridViagens, SideBar, Conteudo, theme } from '../Style/Style'
+import { Container, GridViagens, theme } from '../Style/Style'
 import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton'
@@ -21,10 +21,8 @@ const SelectStyled = Styled(Select)`
 
 function ListTripsPage() {
   const history = useHistory()
-  const pathParams = useParams()
   const [trip, setTrip] = useState([])
   const [tripSelected, setTripSelected] = useState('')
-  const [idTripSelected, setIdTripSelected] = useState('')
 
   const getTrips = () => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/gessica-costa-julian/trips')
@@ -32,7 +30,7 @@ function ListTripsPage() {
         setTrip(res.data.trips)
       })
       .catch(err => {
-        console.log('Erro no Get Trips: ', err)
+        window.alert('Listar Viagens falhou')
       })
   }
 
@@ -70,7 +68,6 @@ function ListTripsPage() {
 
   const onChangeTrip = (e) => {
     setTripSelected(e.target.value)
-    setIdTripSelected(e.target.value)
   }
 
   const trips = trip.map((trip, i) => {

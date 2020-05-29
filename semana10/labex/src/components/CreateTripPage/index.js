@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { NavBar, ButtonChangePage, ButtonPage } from '../Style/NavBarStyle'
 import { Form, FormData, Label, SelectStyled } from '../Style/FormStyle'
 import { useHistory } from 'react-router-dom'
@@ -11,7 +11,7 @@ import axios from 'axios'
 import { MuiThemeProvider } from '@material-ui/core';
 import { planets } from '../Selects';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText'
 
 function CreateTripPage() {
   const history = useHistory()
@@ -54,7 +54,7 @@ function CreateTripPage() {
         resetValues()
       })
       .catch(err => {
-        console.log('Create Trip: ', err)
+        window.alert('Cadastrar viagem falhou')
       })
   }
 
@@ -81,17 +81,16 @@ function CreateTripPage() {
               <Label>Nome:</Label>
               <Input onChange={handleInputChange} value={form.name} name={'name'} type={'text'} inputProps={{ pattern: '[A-Za-zÀ-ú ]{5,}', title: 'O nome deve conter no mínimo 5 letras.' }} required />
               <Label>Planeta:</Label>
-              <FormControl required>
-                <SelectStyled onChange={handleInputChange} value={form.planet} name={'planet'} type={'text'}>
-                  {
-                    planets.map((planet, i) => {
-                      return (
-                        <MenuItem key={i} value={planet}>{planet}</MenuItem>
-                      )
-                    })
-                  }
-                </SelectStyled>
-              </FormControl>
+              <SelectStyled onChange={handleInputChange} value={form.planet} name={'planet'} type={'text'}>
+                {
+                  planets.map((planet, i) => {
+                    return (
+                      <MenuItem key={i} value={planet}>{planet}</MenuItem>
+                    )
+                  })
+                }
+              </SelectStyled>
+              {!form.planet && <FormHelperText>Campo obrigatório!</FormHelperText>}
               <Label>Duração:</Label>
               <Input onChange={handleInputChange} value={form.durationInDays} name={'durationInDays'} type={'Number'} inputProps={{ min: '50' }} required />
               <Label>Data:</Label>

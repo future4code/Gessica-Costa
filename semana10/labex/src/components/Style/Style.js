@@ -1,11 +1,10 @@
 import Styled from 'styled-components'
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
 
 export const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#FF5F00',
-      dark: '#00FF00',
     },
     secondary: {
       main: '#FF0000',

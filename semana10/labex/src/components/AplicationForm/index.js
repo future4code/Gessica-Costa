@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import { Container, GridViagens, theme } from '../Style/Style'
 import { Form, FormData, Label, SelectStyled } from '../Style/FormStyle'
 import { useForm } from '../Hooks/useForm'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import HeaderLogin from '../HeaderLogin';
 import Input from '@material-ui/core/Input'
 import { countries } from '../Selects'
@@ -12,7 +12,6 @@ import { MuiThemeProvider } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 
 function AplicationForm() {
-  const history = useHistory()
   const pathParams = useParams()
   const { form, onChange, resetValues } = useForm({
     name: '',

@@ -31,7 +31,7 @@ function HeaderLogin() {
 
   return (
     <Container>
-      <img onClick={goToHome} src={Logo} />
+      <img alt={'LabeX'} onClick={goToHome} src={Logo} />
     </Container>
   );
 }

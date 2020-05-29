@@ -48,7 +48,7 @@ function HeaderLogin(props) {
   return (
     <Container>
       <MuiThemeProvider theme={theme}>
-        <img onClick={goToHome} src={Logo} />
+        <img alt={'LabeX'} onClick={goToHome} src={Logo} />
         <Button variant={'outlined'} color={'primary'} onClick={goToLogin}>Login</Button>
       </MuiThemeProvider>
     </Container>
