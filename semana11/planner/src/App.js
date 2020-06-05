@@ -11,7 +11,21 @@ const Container = styled.div`
   align-items: center;
   min-height: 100vh;
 `
+const Form = styled.form`
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  text-align: left;
 
+  label {
+    margin-bottom: 8px;
+  }
+
+  select, input {
+    margin-bottom: 16px;
+  }
+`
 const ContainerWeek = styled.div`
   flex-grow: 1;
   display: flex;
@@ -19,11 +33,21 @@ const ContainerWeek = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   height: 50vh;
+  border-top: 1px solid;
+  padding: 26px;
 `
 const WeekDay = styled.div`
-  border-left: 1px solid;
+  border: 1px solid;
   min-width: 200px;
   min-height: 100%;
+  margin: 8px;
+  padding: 8px;
+`
+const Label = styled.label`
+  margin-right: 8px;
+`
+const TaskItem = styled.div`
+  margin-bottom: 8px;
 `
 
 function App() {
@@ -32,6 +56,22 @@ function App() {
     text: '',
     day: ''
   })
+
+  const TasksPerDay = (day) => {
+
+    const filterTasks = tasks.filter(task => {
+      if (task.day === day) {
+        return task
+      }
+    }).map(task => {
+      return <TaskItem key={task.id}>
+        <Label>{task.text}</Label>
+        <button onClick={() => deleteTask(task.id)}>APAGAR</button>
+      </TaskItem>
+    })
+
+    return filterTasks
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -80,140 +120,52 @@ function App() {
       })
   }
 
-  const domingo = tasks.filter(task => {
-    if (task.day === 'Domingo') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li>
-      <button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
-  const segunda = tasks.filter(task => {
-    if (task.day === 'Segunda') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li>
-      <button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
-  const terca = tasks.filter(task => {
-    if (task.day === 'Terça') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li>
-      <button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
-  const quarta = tasks.filter(task => {
-    if (task.day === 'Quarta') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li>
-      <button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
-  const quinta = tasks.filter(task => {
-    if (task.day === 'Quinta') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li>
-      <button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
-  const sexta = tasks.filter(task => {
-    if (task.day === 'Sexta') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li>
-      <button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
-  const sabado = tasks.filter(task => {
-    if (task.day === 'Sábado') {
-      return task
-    }
-  }).map(task => {
-    return <div key={task.id}>
-      <li>{task.text}</li><button onClick={() => deleteTask(task.id)}>Apagar</button>
-    </div>
-  })
-
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <input type={'text'} value={form.text} name={'text'} onChange={handleInputChange} required></input>
-        <select type={'text'} value={form.day} name={'day'} onChange={handleInputChange} required>
+      <Form onSubmit={handleSubmit}>
+        <label>Nova Tarefa</label>
+        <input type={'text'} value={form.text} name={'text'} onChange={handleInputChange} placeholder={'Nova tarefa'} required></input>
+        <label htmlFor={'weekday'}>Dia da semana</label>
+        <select data-testid={'dias'} id={'weekday'} type={'text'} value={form.day} name={'day'} onChange={handleInputChange} required>
           <option value={''}></option>
-          <option value={'Domingo'}>Domingo</option>
-          <option value={'Segunda'}>Segunda</option>
-          <option value={'Terça'}>Terça</option>
-          <option value={'Quarta'}>Quarta</option>
-          <option value={'Quinta'}>Quinta</option>
-          <option value={'Sexta'}>Sexta</option>
-          <option value={'Sábado'}>Sábado</option>
+          <option data-testid={'domingo'} value={'Domingo'}>Domingo</option>
+          <option data-testid={'segunda'} value={'Segunda'}>Segunda</option>
+          <option data-testid={'terca'} value={'Terça'}>Terça</option>
+          <option data-testid={'quarta'} value={'Quarta'}>Quarta</option>
+          <option data-testid={'quinta'} value={'Quinta'}>Quinta</option>
+          <option data-testid={'sexta'} value={'Sexta'}>Sexta</option>
+          <option data-testid={'sabado'} value={'Sábado'}>Sábado</option>
         </select>
-        <button >Adicionar Tarefa</button>
-      </form>
+        <button>ADICIONAR TAREFA</button>
+      </Form>
       <ContainerWeek>
         <WeekDay>
           <h2>Domingo</h2>
-          <ul>
-            {domingo}
-          </ul>
+          {TasksPerDay('Domingo')}
         </WeekDay>
         <WeekDay>
           <h2>Segunda</h2>
-          <ul>
-            {segunda}
-          </ul>
+          {TasksPerDay('Segunda')}
         </WeekDay>
         <WeekDay>
           <h2>Terça</h2>
-          <ul>
-            {terca}
-          </ul>
+          {TasksPerDay('Terça')}
         </WeekDay>
         <WeekDay>
           <h2>Quarta</h2>
-          <ul>
-            {quarta}
-          </ul>
+          {TasksPerDay('Quarta')}
         </WeekDay>
         <WeekDay>
           <h2>Quinta</h2>
-          <ul>
-            {quinta}
-          </ul>
+          {TasksPerDay('Quinta')}
         </WeekDay>
         <WeekDay>
           <h2>Sexta</h2>
-          <ul>
-            {sexta}
-          </ul>
+          {TasksPerDay('Sexta')}
         </WeekDay>
         <WeekDay>
           <h2>Sábado</h2>
-          <ul>
-            {sabado}
-          </ul>
+          {TasksPerDay('Sábado')}
         </WeekDay>
       </ContainerWeek>
     </Container>
