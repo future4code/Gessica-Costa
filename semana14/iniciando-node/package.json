@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./src/index.ts",
+    "exercicio1": "ts-node ./src/exercicio1.ts",
+    "exercicio2": "ts-node ./src/exercicio2.ts",
+    "exercicio3": "ts-node ./src/exercicio3.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gessica",
