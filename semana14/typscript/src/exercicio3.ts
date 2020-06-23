@@ -1,23 +1,29 @@
 function quantidades(
-    type: ShapeType,
+    type: ShapeType2,
     array: number[]
-): number[] {
+): number[] | number {
     if (array.length >= 0) {
         switch (type) {
-            case ShapeType.QUANTnUMEROS:
-                return array;
-            case ShapeType.QUANTnUMEROSiMPARES:
-                return array;
-            case ShapeType.SOMAeLEMENTOS:
-                return array;
+            case ShapeType2.QuantidadeDeNumeros:
+                return array.length;
+            case ShapeType2.QuantidadeDeImpares:
+                return array.filter(elemento => {
+                    return (elemento % 2 !== 0)
+                }).length
+            case ShapeType2.SomaElementos:
+                let aux: number = 0
+                array.map(elemento => {
+                    aux += elemento
+                })
+                return aux;
         }
     }
 }
-enum ShapeType {
-    QUANTnUMEROS,
-    QUANTnUMEROSiMPARES,
-    SOMAeLEMENTOS
+enum ShapeType2 {
+    QuantidadeDeNumeros,
+    QuantidadeDeImpares,
+    SomaElementos
 }
-console.log(operacoes(0, 2, 3))
-console.log(operacoes(1, 2, 3))
-console.log(operacoes(2, 2, 3))
+console.log(quantidades(0, [2, 3, 4, 5, 1]))
+console.log(quantidades(1, [2, 3, 4, 5, 1]))
+console.log(quantidades(2, [2, 3, 4, 5, 1]))
