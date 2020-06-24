@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "ex1": "ts-node ./src/ex1.ts",
-    "ex2": "ts-node ./src/ex2.ts",
+    "ex1": "ts-node ./src/ex1e2.ts",
+    "ex3": "ts-node ./src/ex3e4.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gessica",
