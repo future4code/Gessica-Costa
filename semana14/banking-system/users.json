@@ -2,16 +2,25 @@
   {
     "name": "Géssica",
     "cpf": 1798278787,
-    "dateOfBirth": "1993-06-13T03:00:00.000Z"
+    "dateOfBirth": "1993-06-13T03:00:00.000Z",
+    "balance": 0
   },
   {
     "name": "Igor",
     "cpf": 17982784687,
-    "dateOfBirth": "1989-06-17T03:00:00.000Z"
+    "dateOfBirth": "1989-06-17T03:00:00.000Z",
+    "balance": 0
   },
   {
     "name": "Clarice",
     "cpf": 17982784687,
-    "dateOfBirth": "2000-06-17T03:00:00.000Z"
+    "dateOfBirth": "2000-06-17T03:00:00.000Z",
+    "balance": 0
+  },
+  {
+    "name": "Clarice",
+    "cpf": 1798278467,
+    "dateOfBirth": "2002-06-17T03:00:00.000Z",
+    "balance": 0
   }
 ]

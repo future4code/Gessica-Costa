@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node ./src/createAccount.ts",
     "getAccounts": "ts-node ./src/getAllAccounts.ts",
+    "getBalance": "ts-node ./src/getBalance.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gessica Costa",
