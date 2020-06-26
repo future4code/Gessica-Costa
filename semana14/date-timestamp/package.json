@@ -1,0 +1,20 @@
+{
+  "name": "date-timestamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "ex1": "ts-node ./src/ex1e2.ts",
+    "ex3": "ts-node ./src/ex3e4.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gessica",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.0.14",
+    "moment": "^2.27.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
