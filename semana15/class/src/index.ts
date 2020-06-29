@@ -17,7 +17,7 @@ export class UserAccount {
     private name: string
     private age: number
     private balance: number = 0
-    //private transactions: Transaction[]
+    private transactions: Transaction[] = []
 
     constructor(
         cpf: string,
@@ -30,12 +30,17 @@ export class UserAccount {
         this.age = age
     }
 
+    public getCpf = (): string => this.cpf
+    public Name = (): string => this.name
+    public getAge = (): number => this.age
     public getBalance = (): number => this.balance
 
     public addBalance(value: number): void {
         this.balance += value
         console.log('Saldo atualizado com sucesso')
     }
+
+    public addTransaction = (newTransiction: Transaction) => this.transactions.push(newTransiction)
 }
 
 export class Transaction {
@@ -51,6 +56,5 @@ export class Transaction {
 }
 
 const eu: UserAccount = new UserAccount('8908989089', 'Géssica', 27)
-
-eu.addBalance(Number(process.argv[2]))
-console.log(eu.getBalance())
+// eu.addBalance(Number(process.argv[2]))
+// console.log(eu.getBalance())

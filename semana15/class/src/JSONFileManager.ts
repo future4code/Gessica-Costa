@@ -1,5 +1,5 @@
 import * as fs from 'fs'
-
+import { UserAccount, Transaction } from './index'
 
 export class JSONFileManager {
 
@@ -13,7 +13,7 @@ export class JSONFileManager {
     fs.writeFileSync(this.fileName, JSON.stringify(objectToSave, null, 2))
   }
 
-  getObjectFromFile(): Object {
+  getObjectFromFile(): UserAccount[] {
     return JSON.parse(fs.readFileSync(this.fileName).toString());
   }
 }
