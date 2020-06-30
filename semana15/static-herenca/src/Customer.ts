@@ -1,6 +1,6 @@
-import { User } from './index'
+import { User } from './User'
 
-class Customer extends User {
+export class Customer extends User {
     public purchaseTotal: number = 0
     private creditCard: string
 
@@ -20,11 +20,3 @@ class Customer extends User {
         return this.creditCard
     }
 }
-
-const newCustomer: Customer = new Customer('1', 'ana@gmail.com', 'Ana', '123456', '123')
-
-console.log(newCustomer)
-
-// Exercício 2
-// a. 1.
-// b. 2, uma da instância do User e outra da instância do Customer.

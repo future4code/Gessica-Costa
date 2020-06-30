@@ -1,34 +1,5 @@
-export class User {
-    private id: string
-    private email: string
-    private name: string
-    private password: string
-
-    constructor(
-        id: string,
-        email: string,
-        name: string,
-        password: string
-    ){
-        console.log('Chamando o construtor da classe User')
-        this.id = id
-        this.email = email
-        this.name = name
-        this.password = password
-    }
-
-    public getId(): string {
-        return this.id
-    }
-
-    public getEmail(): string {
-        return this.email
-    }
-
-    public getName(): string {
-        return this.name
-    }
-}
+import { User } from './User'
+import { Customer } from './Customer'
 
 const newUser: User = new User('1', 'joao@gmail.com', 'João', '123456')
 console.log(newUser)
@@ -36,3 +7,21 @@ console.log(newUser)
 // Exercício 1
 // a. Não, pois é private e não possui método get relacionada ao password.
 // b. 1.
+
+const newCustomer: Customer = new Customer('1', 'ana@gmail.com', 'Ana', '123456', '123')
+console.log(newCustomer)
+
+// Exercício 2
+// a. 1.
+// b. 2, uma da instância do User e outra da instância do Customer.
+
+console.log(
+    newCustomer.getId(),
+    newCustomer.getName(),
+    newCustomer.getEmail(),
+    newCustomer.getCreditCard()
+)
+
+// Exercício 3
+// a. Não, porque o password é private e nõ possui método get.
+
