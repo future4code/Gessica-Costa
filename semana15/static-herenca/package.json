@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "ex2": "ts-node ./src/ex2.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

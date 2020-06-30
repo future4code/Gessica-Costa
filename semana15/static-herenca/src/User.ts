@@ -9,7 +9,7 @@ export class User {
         email: string,
         name: string,
         password: string
-    ){
+    ) {
         console.log('Chamando o construtor da classe User')
         this.id = id
         this.email = email
@@ -27,5 +27,10 @@ export class User {
 
     public getName(): string {
         return this.name
+    }
+
+    public introduceYourself(): string {
+        //console.log('Olá, bom dia!')
+        return `Olá, sou ${this.name}. Bom dia!`
     }
 }

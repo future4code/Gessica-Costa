@@ -23,5 +23,7 @@ console.log(
 )
 
 // Exercício 3
-// a. Não, porque o password é private e nõ possui método get.
+// a. Não, porque o password é private e não possui método get.
+
+console.log(newCustomer.introduceYourself())
 
