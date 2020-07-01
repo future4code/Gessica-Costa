@@ -7,4 +7,6 @@ export class Residence extends Place {
     ) {
         super(cep)
     }
+
+    getResidentsQauntity = () => this.residentsQuantity
 }
