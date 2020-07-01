@@ -1,5 +1,7 @@
 import { User } from './User'
 import { Customer } from './Customer'
+import { Employee } from './Employee'
+import moment from 'moment'
 
 const newUser: User = new User('1', 'joao@gmail.com', 'João', '123456')
 console.log(newUser)
@@ -8,7 +10,7 @@ console.log(newUser)
 // a. Não, pois é private e não possui método get relacionada ao password.
 // b. 1.
 
-const newCustomer: Customer = new Customer('1', 'ana@gmail.com', 'Ana', '123456', '123')
+const newCustomer: Customer = new Customer('2', 'ana@gmail.com', 'Ana', '123456', '123')
 console.log(newCustomer)
 
 // Exercício 2
@@ -27,3 +29,16 @@ console.log(
 
 console.log(newCustomer.introduceYourself())
 
+const newEmployee: Employee = new Employee(
+    '3',
+    'gessica@gmail.com',
+    'Géssica',
+    '123456',
+    moment('30 06 2020', 'DD MM YYYY'),
+    4000
+)
+console.log(newEmployee)
+
+// Exercício 6
+// a. 
+// b. 
