@@ -13,6 +13,8 @@ console.log(newClient.calculateBill())
 // Exercício 1
 // a. Consegui imprimir todas.
 
-const newPlace: Place = new Place('12')
+//const newPlace: Place = new Place('12')
 // Exercício 2
 // a. "Cannot create an instance of an abstract class."
+// b. Criar uma nova class subclasse da Place, que não seja abstrata.
+
