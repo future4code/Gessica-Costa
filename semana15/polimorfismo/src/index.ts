@@ -33,3 +33,8 @@ console.log(newIndustry.getCep())
 // a. A classe ResidentialClient possui métodos e propriedades
 // da classe e interface mãe/pai, porque por ser filha ela tem
 // que ter os atributos e métodos dos pais.
+
+// Exercício 5
+// a. As duas herdaram atributos e o método calculateBill de Client.
+// b. A classe herdada por elas são diferentes, com isso algun atributos
+// são diferentes.
