@@ -5,8 +5,19 @@ import { Mission } from "./Mission";
 
 const newTeacher: Teacher = new Teacher("1", "Maria", "maria@gmail.com", Specialities.REACT)
 const newStudent: Student = new Student("2", "Géssica", "gessica@gmail.com", "13/06/1993", "Asistir séries")
-const newMission: Mission = new Mission("3", "Bouman", "05/07/2020", "05/01/2021", newTeacher,  newStudent, "2")
+const newMission: Mission = new Mission("3", "Bouman", "05/07/2020", "05/01/2021", newTeacher, newStudent, "2")
 
 console.log(newTeacher)
 console.log(newStudent)
 console.log(newMission)
+
+// const a: number = Number(process.argv[2])
+// let b
+// switch (a) {
+//     case 0:
+//         b = Specialities.BACKEND
+//         break
+//     case 1:
+//         b = Specialities.CSS
+//         break
+// }

@@ -14,4 +14,6 @@ export class Mission extends MainData {
     ) {
         super(id, name)
     }
+
+    // saudation = () => "oi"
 }
