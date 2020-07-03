@@ -8,8 +8,8 @@ export class Mission extends MainData {
         protected name: string,
         private startDate: string,
         private endDate: string,
-        private teachers: Teacher,
-        private students: Student,
+        private teachers: Teacher[],
+        private students: Student[],
         private module: string
     ) {
         super(id, name)
