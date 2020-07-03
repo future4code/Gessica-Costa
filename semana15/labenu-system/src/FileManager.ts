@@ -12,7 +12,6 @@ export class FileManager {
     }
 
     public readFile(): any {
-        //return JSON.parse(fs.readFileSync(this.filePath).toString());
         const data: string = String(fs.readFileSync(this.filePath));
         return data ? JSON.parse(data) : [];
     }

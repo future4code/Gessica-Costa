@@ -18,7 +18,6 @@ const createStudent = (
 
     const fm: FileManager = new FileManager('students.json')
     const file: any = fm.readFile()
-    console.log(file)
     file.push(newStudent)
     fm.writeFile(file)
 }

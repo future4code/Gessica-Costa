@@ -6,6 +6,8 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "createStudent": "ts-node ./src/createStudent.ts",
+    "createTeacher": "ts-node ./src/createTeacher.ts",
+    "createMission": "ts-node ./src/createMission.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Géssica Costa",

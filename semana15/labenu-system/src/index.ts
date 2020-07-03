@@ -11,13 +11,3 @@ console.log(newTeacher)
 console.log(newStudent)
 console.log(newMission)
 
-// const a: number = Number(process.argv[2])
-// let b
-// switch (a) {
-//     case 0:
-//         b = Specialities.BACKEND
-//         break
-//     case 1:
-//         b = Specialities.CSS
-//         break
-// }
