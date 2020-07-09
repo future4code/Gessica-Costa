@@ -47,5 +47,13 @@ const getActorGenderCount = async (gender: string): Promise<any> => {
     return console.log(result[0][0])
 }
 
-getActorGenderCount("male")
+const updateActorSalary = async (id: string, salary: number): Promise<any> => {
+    await connection('Actor')
+    .update({salary: salary,})
+    .where(`id = ${id}`)
+
+    console.log('update realizado')
+}
+
+updateActorSalary("001", 400000)
 //getActors()
