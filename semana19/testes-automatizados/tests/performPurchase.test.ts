@@ -1,4 +1,4 @@
-import { performPurchase, User } from "../src/ex1"
+import { performPurchase, User } from "../src/performPurchase"
 
 describe("performPurchase", () => {
     test("Usuário com saldo maior que o valor de compra", () => {
