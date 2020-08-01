@@ -2,15 +2,22 @@ import { Request, Response } from "express";
 import { UserInputDTO, LoginInputDTO, UserRole } from "../model/User";
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseDatabase } from "../data/BaseDatabase";
+import { UserDatabase } from "../data/UserDatabase";
+import { Authenticator } from "../services/Authenticator";
+import { HashManager } from "../services/HashManager";
+import { IdGenerator } from "../services/IdGenerator";
 
 export class UserController {
+
+    private static UserBusiness = new UserBusiness(
+        new UserDatabase(),
+        new Authenticator(),
+        new HashManager(),
+        new IdGenerator()
+    )
+
     async signup(req: Request, res: Response) {
         try {
-
-            if (req.body.role !== "NORMAL" &&
-                req.body.role !== "ADMIN") {
-                throw new Error("Role must be NORMAL ou ADMIN")
-            }
 
             const input: UserInputDTO = {
                 email: req.body.email,
@@ -19,8 +26,7 @@ export class UserController {
                 role: req.body.role
             }
 
-            const userBusiness = new UserBusiness();
-            const token = await userBusiness.createUser(input);
+            const token = await UserController.UserBusiness.createUser(input);
 
             res.status(200).send({ token });
 
@@ -40,8 +46,7 @@ export class UserController {
                 password: req.body.password
             };
 
-            const userBusiness = new UserBusiness();
-            const token = await userBusiness.getUserByEmail(loginData);
+            const token = await UserController.UserBusiness.getUserByEmail(loginData);
 
             res.status(200).send({ token });
 
