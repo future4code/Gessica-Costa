@@ -27,10 +27,24 @@ export class ShowController {
                 throw new Error("Show must by between 8pm and 11pm(23h)")
             }
 
-            if(req.body.weekDay !== "SEXTA" &&
-            req.body.weekDay !== "SÁBADO" &&
-            req.body.weekDay !== "DOMINGO") {
+            if (req.body.weekDay !== "SEXTA" &&
+                req.body.weekDay !== "SÁBADO" &&
+                req.body.weekDay !== "DOMINGO") {
                 throw new Error("Show must be SEXTA, SÁBADO ou DOMINGO")
+            }
+
+            const showBusiness = new ShowBusiness()
+            const shows = await showBusiness.getAllShowsByDay(req.body.weekDay)
+
+            const weekDay = shows.filter((s: any) => {
+                if (s.start_time === req.body.startTime ||
+                    s.end_time === req.body.endTime) {
+                    return true
+                }
+            })
+
+            if (weekDay) {
+                throw new Error("Already exist show at this time")
             }
 
             const input: ShowInputDTO = {
@@ -39,11 +53,38 @@ export class ShowController {
                 endTime: req.body.endTime,
                 bandId: req.body.bandId
             }
-            
-            const showBusiness = new ShowBusiness()
+
+
             await showBusiness.createShow(input)
 
             res.status(200).send({ message: "Show cadastrado" })
+        } catch (err) {
+            res.status(400).send({ error: err.message })
+        }
+
+        await BaseDatabase.destroyConnection()
+    }
+
+    async week(req: Request, res: Response) {
+        try {
+
+            const authenticator = new Authenticator()
+            authenticator.getData(req.headers.authorization as string)
+
+            const showBusiness = new ShowBusiness()
+            const shows = await showBusiness.getAllShowsByDay(req.body.weekDay)
+
+            if (!req.body.weekDay) {
+                throw new Error("Empty field")
+            }
+
+            if (req.body.weekDay !== "SEXTA" &&
+                req.body.weekDay !== "SÁBADO" &&
+                req.body.weekDay !== "DOMINGO") {
+                throw new Error("Show must be SEXTA, SÁBADO ou DOMINGO")
+            }
+
+            res.status(200).send({ shows })
         } catch (err) {
             res.status(400).send({ error: err.message })
         }

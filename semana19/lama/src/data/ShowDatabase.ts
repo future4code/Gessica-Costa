@@ -1,5 +1,6 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { Show } from "../model/Show";
+import { BandDatabase } from "./BandDatabase";
 
 export class ShowDatabase extends BaseDatabase {
 
@@ -12,6 +13,7 @@ export class ShowDatabase extends BaseDatabase {
         end_time: number,
         band_id: string
     ): Promise<void> {
+
         try {
             await this.getConnection()
                 .insert({
@@ -27,13 +29,15 @@ export class ShowDatabase extends BaseDatabase {
         }
     }
 
-    public async getAllShowsByDay(week_day: string): Promise<Show> {
+    public async getAllShowsByDay(week_day: string, start_time: string = 'start_time'): Promise<any> {
+
         const result = await this.getConnection()
-            .select('*')
+            .select('start_time', 'end_time', 'name', 'music_genre')
             .from(ShowDatabase.TABLE_NAME)
             .where({ week_day })
-            .orderBy('start_time')
+            .leftJoin(BandDatabase.getTableName(), 'Lama_Shows.band_id', 'Lama_Bands.id')
+            .orderBy(start_time)
 
-        return Show.toShowModel(result[0])
+        return result
     }
 }

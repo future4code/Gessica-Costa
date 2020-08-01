@@ -6,4 +6,4 @@ export const showRouter = express.Router()
 const showController = new ShowController()
 
 showRouter.post('/create', showController.create)
-// showRouter.get('/create', showController.create)
+showRouter.get('/week', showController.week)

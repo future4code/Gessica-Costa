@@ -14,7 +14,7 @@ export class ShowBusiness {
     }
 
     async getAllShowsByDay(weekDay: string) {
-
+        
         const showDatabase = new ShowDatabase()
         return await showDatabase.getAllShowsByDay(weekDay)
     }
