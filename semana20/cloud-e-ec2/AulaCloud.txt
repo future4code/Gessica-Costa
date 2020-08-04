@@ -1,0 +1,21 @@
+Exercício 1
+
+4. O mais difícil foi saber onde eu deveria executar cada comando e o que alterar do comando. Por exemplo,
+`GRANT ALL PRIVILEGES ON *.* TO 'administrator'@'localhost' IDENTIFIED BY 'very_strong_password';`
+Não sei se poderia alterar todo o 'administrator'@'localhost' ou só o 'administrator'.
+
+O mais fácil foi seguir os passos, alterar o arquivo /etc/mysql/mysql.conf.d/mysqld.cnf.
+
+
+Exercício 2
+
+1. Eu teria que agir como se estivesse baixando uma aplicação do github, por exemplo, para meu computador. Então primeiro na EC2 devo clonar o projeto, e rodar o npm install, acredito que funcionará de forma semelhante a vista em aula.
+
+3. ssh -i gessica_key.pem ubuntu@54.81.103.249
+
+6.
+npm run build
+cd build
+sudo python -mSimpleHTTPServer 80
+
+7. No exercício da manhã criamos uma nova aplicação react diretamente na máquina usando o npx creat-react-app, já a tarde utilizei uma aplicação que já existia no github, clonei e instalei na máquina.
