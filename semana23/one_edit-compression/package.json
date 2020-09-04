@@ -1,0 +1,17 @@
+{
+  "name": "one-edit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Géssica Costa",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.6.0",
+    "ts-node-dev": "^1.0.0-pre.60",
+    "typescript": "^4.0.2"
+  }
+}
