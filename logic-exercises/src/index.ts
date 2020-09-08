@@ -1,4 +1,5 @@
 import { missingNumber } from "./missingNumber"
+import { indexOf } from "./indexOf"
 
 //Exercício 1:
 const hundred: number[] = [
@@ -13,4 +14,8 @@ const hundred: number[] = [
    97, 98, 99,19, 7, 71
  ]
 
-console.log(missingNumber(hundred))
+//console.log(missingNumber(hundred))
+
+//Exercício 2:
+console.log(indexOf("gessica", "s"));
+console.log("gessica".indexOf("s"));
