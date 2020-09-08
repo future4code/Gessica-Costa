@@ -1,4 +1,5 @@
 import { notDeepStrictEqual } from "assert";
+import { indexOf } from "./indexOf";
 
 export const missingNumber = (input: number[]): number => {
     let orderedInput: number[] = [];
@@ -12,9 +13,12 @@ export const missingNumber = (input: number[]): number => {
         return a - b;
     })
     for (const comparativeNumber of oneHunderOrdered) {
-        if (orderedInput.indexOf(comparativeNumber) === -1) {
+        if(indexOf(orderedInput, comparativeNumber) === -1){
             missingNumber = comparativeNumber;
         }
+        // if (orderedInput.indexOf(comparativeNumber) === -1) {
+        //     missingNumber = comparativeNumber;
+        // }
     }
     return missingNumber;
 }

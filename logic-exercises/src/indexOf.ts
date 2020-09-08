@@ -1,4 +1,4 @@
-export const indexOf = (source: string, query: string): number => {
+export const indexOf = (source: string|number[], query: string|number): number => {
     let index: number = -1;
 
     for (let i = 0; i < source.length; i++) {
