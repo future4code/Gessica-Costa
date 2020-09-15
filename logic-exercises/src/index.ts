@@ -1,6 +1,7 @@
 import { missingNumber } from "./missingNumber"
 import { indexOf } from "./indexOf"
 import { robbingHouses } from "./robbingHouses";
+import { largestCommomPrefix } from "./largestCommomPrefix";
 
 //Exercício 1:
 const hundred: number[] = [
@@ -19,6 +20,9 @@ console.log("missingNumber: ", missingNumber(hundred))
 
 //Exercício 2:
 console.log("indexOf: ", indexOf("gessica", "s"));
+
+//Exercício 2:
+console.log("largestCommomPrefix: ", largestCommomPrefix(["oie", "ola", "oieu", "ooo"]));
 
 //Exercício 5:
 const moneyHouses: number[] = [2,3,6,12,3,9,11,4]
